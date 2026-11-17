@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schweizer Gipfel-Tour · EBA Adventskalender</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --swiss-red: #dc2626;
+      --swiss-red-soft: #fef2f2;
+      --alpine-blue: #0284c7;
+      --alpine-blue-soft: #f0f9ff;
+      --steel: #334155;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --emerald: #059669;
+      --emerald-soft: #ecfdf5;
+      --shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #e0f2fe 0%, var(--bg) 280px);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      padding: 16px 14px 40px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Header Card */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-top: 4px solid var(--swiss-red);
+    }
+
+    .hero-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .swiss-cross {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: var(--swiss-red);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.25);
+    }
+
+    .hero-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .hero-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .hero-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .name-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px 10px;
+    }
+
+    .name-input-wrap label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .name-input-wrap input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      width: 145px;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+    }
+
+    .stat-pill.points {
+      background: var(--amber-soft);
+      border-color: #fcd34d;
+      color: #92400e;
+    }
+
+    /* Mountain Map Card */
+    .map-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 20px;
+    }
+
+    .map-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .map-header h2 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .map-svg-wrap {
+      background: linear-gradient(180deg, #e0f2fe 0%, #f8fafc 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .stage-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .stage-tabs { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stage-btn {
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 11px;
+      border: 1.5px solid var(--border);
+      background: var(--surface-alt);
+      cursor: pointer;
+      transition: all 0.16s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .stage-btn:hover {
+      border-color: var(--alpine-blue);
+      transform: translateY(-1px);
+    }
+
+    .stage-btn.active {
+      border-color: var(--alpine-blue);
+      background: var(--alpine-blue-soft);
+      box-shadow: 0 2px 10px rgba(2, 132, 199, 0.12);
+    }
+
+    .stage-btn.locked {
+      opacity: 0.72;
+      background: #f1f5f9;
+    }
+
+    .stage-btn-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .stage-btn-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Active Stage Bar & Vault Code */
+    .stage-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .vault-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .vault-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .vault-digits {
+      display: flex;
+      gap: 6px;
+    }
+
+    .vault-digit {
+      width: 34px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+
+    .vault-digit.vocational {
+      border-color: #f59e0b;
+      background: var(--amber-soft);
+    }
+
+    .vault-digit.unlocked {
+      border-color: var(--emerald);
+      background: var(--emerald-soft);
+      color: #065f46;
+    }
+
+    /* 5 Tiles Grid */
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .tiles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .tiles-grid { grid-template-columns: 1fr; }
+    }
+
+    .tile-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+
+    .tile-card:hover {
+      border-color: var(--alpine-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .tile-card.active {
+      border-color: var(--alpine-blue);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.16);
+    }
+
+    .tile-card.vocational {
+      border-color: #f59e0b;
+      background: linear-gradient(180deg, #fffbeb 0%, #ffffff 55%);
+    }
+
+    .tile-card.vocational.active {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+    }
+
+    .tile-card.solved {
+      border-color: #34d399;
+    }
+
+    .tile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cat-pill {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+    }
+
+    .tile-card.vocational .cat-pill {
+      background: #fef3c7;
+      border-color: #fcd34d;
+      color: #92400e;
+    }
+
+    .tile-status {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .tile-status.done {
+      color: var(--emerald);
+    }
+
+    .tile-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .tile-foot {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Inline Task Workspace */
+    .workspace-card {
+      background: var(--surface);
+      border: 1.5px solid var(--alpine-blue);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .workspace-card.vocational {
+      border-color: var(--amber);
+    }
+
+    .ws-header {
+      padding: 14px 20px;
+      background: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ws-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      padding: 12px 20px 0;
+    }
+
+    @media (max-width: 600px) {
+      .ws-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .step-tab {
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .step-tab.active {
+      background: var(--alpine-blue);
+      border-color: var(--alpine-blue);
+      color: #fff;
+    }
+
+    .workspace-card.vocational .step-tab.active {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .ws-body {
+      padding: 18px 20px 20px;
+    }
+
+    .info-text {
+      font-size: 1.03rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .facts-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .fact-badge {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+    }
+
+    .tile-img {
+      max-width: 100%;
+      max-height: 240px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 14px;
+      object-fit: cover;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.14s ease;
+    }
+
+    .btn-primary {
+      background: var(--alpine-blue);
+      color: #fff;
+    }
+    .btn-primary:hover { filter: brightness(0.94); }
+
+    .btn-success {
+      background: var(--emerald);
+      color: #fff;
+    }
+    .btn-success:hover { filter: brightness(0.94); }
+
+    .btn-outline {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { background: var(--surface-alt); }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .quiz-opt {
+      width: 100%;
+      text-align: left;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--surface-alt);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .quiz-opt:hover { border-color: var(--alpine-blue); }
+    .quiz-opt.correct { border-color: var(--emerald); background: var(--emerald-soft); color: #065f46; }
+    .quiz-opt.wrong { border-color: var(--swiss-red); background: var(--swiss-red-soft); color: #991b1b; }
+
+    .feedback-box {
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 10px;
+      border: 1px solid var(--border);
+    }
+    .feedback-box.ok { background: var(--emerald-soft); border-color: #6ee7b7; color: #065f46; }
+    .feedback-box.err { background: var(--swiss-red-soft); border-color: #fca5a5; color: #991b1b; }
+    .feedback-box.info { background: var(--alpine-blue-soft); border-color: #7dd3fc; color: #075985; }
+
+    .slider-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    .slider-val-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .slider-big-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--alpine-blue);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--alpine-blue);
+      cursor: pointer;
+      height: 8px;
+    }
+
+    textarea.action-input {
+      width: 100%;
+      min-height: 80px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      margin: 10px 0 12px;
+      resize: vertical;
+    }
+    textarea.action-input:focus {
+      outline: none;
+      border-color: var(--alpine-blue);
+    }
+
+    /* Locked Stage Card */
+    .locked-card {
+      background: var(--surface);
+      border: 1px dashed #94a3b8;
+      border-radius: var(--radius);
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    /* Completion Banner */
+    .summit-card {
+      background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 100%);
+      border: 2px solid #34d399;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .code-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 2px solid var(--emerald);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      color: #065f46;
+      margin: 10px 0;
+    }
+
+    .footer-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 4px;
+    }
+
+    .hidden { display: none !important; }
+
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="container">
+    <!-- Hero Header -->
+    <header class="hero-card">
+      <div class="hero-left">
+        <div class="swiss-cross" aria-hidden="true">🏔️</div>
+        <div>
+          <h1 class="hero-title" id="app-title">Schweizer Gipfel-Tour 🎄</h1>
+          <p class="hero-subtitle" id="app-subtitle">Adventskalender für Mechanikpraktiker/innen EBA · Aktuelles &amp; Berufskunde</p>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="name-input-wrap">
+          <label for="student-name">Team / Name:</label>
+          <input id="student-name" type="text" placeholder="z. B. Jan &amp; Noah" oninput="saveStudentName()" />
+        </div>
+        <div class="stat-pill" id="elevation-pill">⛰️ 1'000 m</div>
+        <div class="stat-pill points" id="points-pill">🏆 0 / 500 Pkt</div>
+      </div>
+    </header>
+
+    <!-- Mountain Panorama Map -->
+    <section class="map-card">
+      <div class="map-header">
+        <h2>🇨🇭 Dein Aufstieg über 4 Advents-Etappen (Donnerstag / Freitag)</h2>
+        <span style="font-size: 0.82rem; color: var(--text-muted);" id="overall-progress-label">0 / 20 Kacheln gelöst</span>
+      </div>
+
+      <div class="map-svg-wrap">
+        <svg viewBox="0 0 800 170" style="width: 100%; height: auto; max-height: 165px; display: block;" id="mountain-svg">
+          <!-- Distant Alpine Peaks -->
+          <polygon points="0,165 110,60 230,165" fill="#cbd5e1" opacity="0.45" />
+          <polygon points="150,165 320,38 480,165" fill="#94a3b8" opacity="0.35" />
+          <polygon points="380,165 560,26 740,165" fill="#cbd5e1" opacity="0.5" />
+          <polygon points="560,165 700,12 800,165" fill="#94a3b8" opacity="0.4" />
+          <!-- Snow Caps -->
+          <polygon points="560,26 525,58 550,52 568,64 595,55" fill="#ffffff" />
+          <polygon points="700,12 666,52 690,46 708,58 732,48" fill="#ffffff" />
+          <polygon points="320,38 292,66 314,60 330,70 350,62" fill="#ffffff" />
+          <!-- Dashed Trail -->
+          <polyline points="95,134 290,104 495,68 700,30" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="7,6" />
+          <!-- Progress Trail -->
+          <polyline id="svg-progress-line" points="95,134" fill="none" stroke="#0284c7" stroke-width="4.5" stroke-linecap="round" />
+          <!-- Station Nodes rendered by JS -->
+          <g id="svg-nodes"></g>
+        </svg>
+      </div>
+
+      <div class="stage-tabs" id="stage-tabs"></div>
+    </section>
+
+    <!-- Active Stage Banner & OLAT Tresorcode -->
+    <section class="stage-banner" id="stage-banner">
+      <div>
+        <div style="font-size: 1.05rem; font-weight: 800;" id="stage-title">Station 1: Talstation (1'000 m)</div>
+        <div style="font-size: 0.84rem; color: var(--text-muted);" id="stage-meta">Do/Fr, 3./4. Dez. · 0 / 5 Kacheln gelöst</div>
+      </div>
+      <div class="vault-wrap" id="vault-wrap">
+        <span class="vault-label">🔐 OLAT Etappen-Code:</span>
+        <div class="vault-digits" id="vault-digits"></div>
+      </div>
+    </section>
+
+    <!-- Locked Stage Notice -->
+    <section class="locked-card hidden" id="locked-notice">
+      <div style="font-size: 2.2rem; margin-bottom: 8px;">🚡🔒</div>
+      <h3 style="font-size: 1.1rem; color: var(--text); margin-bottom: 6px;" id="locked-title">Station noch geschlossen</h3>
+      <p id="locked-msg" style="font-size: 0.92rem;">Diese Etappe wird am entsprechenden Schul-Donnerstag/Freitag freigeschaltet.</p>
+    </section>
+
+    <!-- 5 Tiles Grid -->
+    <section class="tiles-grid" id="tiles-grid"></section>
+
+    <!-- Inline Task Workspace -->
+    <section class="workspace-card hidden" id="workspace-card">
+      <div class="ws-header">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span class="cat-pill" id="ws-cat-pill">🏛️ Politik</span>
+          <h3 style="font-size: 1.05rem; font-weight: 800;" id="ws-title">Titel</h3>
+        </div>
+        <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.82rem;" onclick="closeWorkspace()">✕ Schliessen</button>
+      </div>
+
+      <div class="ws-steps">
+        <button class="step-tab active" id="stab-info" onclick="setStep('info')">1. 📖 Infohappen</button>
+        <button class="step-tab" id="stab-quiz" onclick="setStep('quiz')">2. ❓ Quiz</button>
+        <button class="step-tab" id="stab-estimate" onclick="setStep('estimate')">3. 🎯 Schätzen</button>
+        <button class="step-tab" id="stab-action" onclick="setStep('action')">4. 🛠️ Auftrag</button>
+      </div>
+
+      <div class="ws-body">
+        <!-- Step 1: Info -->
+        <div id="panel-info">
+          <img id="ws-img" class="tile-img hidden" alt="Illustration zum Thema" />
+          <p class="info-text" id="ws-info-text"></p>
+          <div class="facts-row" id="ws-facts"></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <button class="btn btn-primary" onclick="setStep('quiz')">Weiter zum Quiz →</button>
+            <a id="ws-link" class="btn btn-outline hidden" target="_blank" rel="noopener noreferrer">🔗 Infos weiterlesen</a>
+          </div>
+        </div>
+
+        <!-- Step 2: Quiz -->
+        <div id="panel-quiz" class="hidden">
+          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;" id="ws-q-text"></h4>
+          <div class="quiz-options" id="ws-q-opts"></div>
+          <div id="ws-q-fb" class="feedback-box hidden"></div>
+          <div style="margin-top: 14px;">
+            <button class="btn btn-primary" onclick="setStep('estimate')">Weiter zur Schätzfrage →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Estimate -->
+        <div id="panel-estimate" class="hidden">
+          <h4 style="font-size: 1rem; font-weight: 700;" id="ws-est-q"></h4>
+          <div class="slider-box">
+            <div class="slider-val-row">
+              <span id="ws-est-min" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;"></span>
+              <span id="ws-est-val" class="slider-big-val"></span>
+              <span id="ws-est-max" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;"></span>
+            </div>
+            <input type="range" id="ws-est-slider" oninput="updateEstimateDisplay()" />
+            <div style="margin-top: 12px;">
+              <button class="btn btn-primary" onclick="checkEstimate()">Schätzung prüfen 🎯</button>
+            </div>
+          </div>
+          <div id="ws-est-fb" class="feedback-box info hidden"></div>
+          <div style="margin-top: 14px;">
+            <button class="btn btn-primary" onclick="setStep('action')">Weiter zum Handlungsauftrag →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Action -->
+        <div id="panel-action" class="hidden">
+          <div style="background: var(--surface-alt); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 10px;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🛠️ Praxis- / Kurzauftrag (ca. 5 Minuten)</div>
+            <p id="ws-act-prompt" style="font-size: 0.96rem; font-weight: 600;"></p>
+          </div>
+          <label for="ws-act-input" style="font-size: 0.84rem; font-weight: 600; color: var(--text-muted);">Eure kurze Notiz / Antwort:</label>
+          <textarea id="ws-act-input" class="action-input" oninput="saveActionNote()"></textarea>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <button class="btn btn-success" id="ws-complete-btn" onclick="completeTile()">Auftrag erledigt &amp; Code-Ziffer freischalten 🔓</button>
+            <span id="ws-solved-note" class="hidden" style="font-size: 0.88rem; font-weight: 700; color: var(--emerald);">✅ Kachel gelöst (+25 Pkt)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage Completion Card -->
+    <section class="summit-card hidden" id="summit-card">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.2rem; font-weight: 800; color: #065f46;">🎉 Etappe geschafft! Gipfel-Etappen-Code freigeschaltet</h3>
+          <p style="font-size: 0.92rem; color: #047857; margin-top: 4px;">Trage diesen 5-stelligen Code in OpenOLAT ein oder zeige ihn deiner Lehrperson.</p>
+          <div class="code-hero" id="summit-code">74925</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button class="btn btn-success" onclick="copyStageCode()">📋 Code für OLAT kopieren</button>
+          <button class="btn btn-outline" onclick="copyReflections()">📝 Alle 5 Notizen kopieren</button>
+          <button class="btn btn-primary hidden" id="ntfy-send-btn" onclick="sendNtfyReport()">📲 Erfolg an Lehrperson melden</button>
+        </div>
+      </div>
+      <div id="summit-status-msg" style="font-size: 0.85rem; font-weight: 600; color: #065f46; margin-top: 8px;"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bar">
+      <span id="data-source-badge">⚪ Eingebaute Daten</span>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span>Schweizer Gipfel-Tour · Mechanikpraktiker EBA</span>
+        <button onclick="resetProgress()" style="background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-size: 0.78rem;">Fortschritt zurücksetzen</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const DEFAULT_DATA = {
+  "config": {
+    "title": "Schweizer Gipfel-Tour 🎄",
+    "subtitle": "Adventskalender für Mechanikpraktiker/innen EBA · Aktuelles & Berufskunde",
+    "className": "Mechanikpraktiker EBA",
+    "ntfyTopic": "",
+    "showVaultCode": true,
+    "pointsPerTile": 25,
+    "elevationPerTile": 200
+  },
+  "stages": [
+    {
+      "id": 1,
+      "stationName": "Talstation",
+      "elevation": 1000,
+      "dateLabel": "Do/Fr, 3./4. Dez.",
+      "unlocked": true,
+      "hintLocked": "Diese Gondel öffnet am Donnerstag/Freitag, 3./4. Dezember.",
+      "tiles": [
+        {
+          "category": "politik",
+          "categoryLabel": "Politik",
+          "icon": "🏛️",
+          "isVocational": false,
+          "title": "Wintersession im Bundeshaus",
+          "infoText": "In der ersten Dezemberwoche treffen sich National- und Ständerat in Bern zur Wintersession. Drei Wochen lang beraten die Politikerinnen und Politiker das Geld-Budget der Schweiz für das nächste Jahr und diskutieren wichtige neue Gesetze.",
+          "facts": ["📍 Bern (Bundeshaus)", "⏱️ 3 Wochen Dauer", "🇨🇭 Budget & Gesetze"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/news/schweiz",
+          "quiz": {
+            "question": "Wie viele Mitglieder hat der Schweizer Bundesrat insgesamt?",
+            "options": ["5 Mitglieder", "7 Mitglieder", "9 Mitglieder", "11 Mitglieder"],
+            "correct": 1,
+            "praise": "Volltreffer! Genau 7 Bundesrätinnen und Bundesräte bilden die Schweizer Landesregierung.",
+            "correction": "Nicht ganz: Der Schweizer Bundesrat besteht seit 1848 aus genau 7 Mitgliedern."
+          },
+          "estimate": {
+            "question": "Wie viele Sitze hat der Nationalrat (die grosse Kammer in Bern)?",
+            "min": 100,
+            "max": 300,
+            "step": 1,
+            "target": 200,
+            "unit": "Sitze",
+            "tolerance": 15
+          },
+          "action": {
+            "prompt": "Partnerauftrag (5 Min): Öffnet srf.ch/news/schweiz, sucht eine aktuelle Schlagzeile aus der Schweizer Politik und fasst sie unten in einem kurzen Satz zusammen.",
+            "placeholder": "Unsere aktuelle Schlagzeile aus der Schweiz..."
+          },
+          "codeDigit": "7"
+        },
+        {
+          "category": "sport",
+          "categoryLabel": "Sport",
+          "icon": "🏆",
+          "isVocational": false,
+          "title": "Schweizer Ski-Stars im Speed-Fieber",
+          "infoText": "Im Dezember startet der Ski-Weltcup richtig durch. Schweizer Athletinnen und Athleten wie Marco Odermatt oder Lara Gut-Behrami rasen mit über 130 km/h die eisigen Pisten hinunter. Dabei entscheiden Hundertstelsekunden und perfekte Material-Abstimmung.",
+          "facts": ["⛷️ Ski Alpin Weltcup", "🇨🇭 Top-Skination", "⏱️ Hundertstel entscheiden"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/sport",
+          "quiz": {
+            "question": "Welcher berühmte Berner Skiklassiker findet jeweils Mitte Januar in Wengen statt?",
+            "options": ["Lauberhorn-Rennen", "Spengler Cup", "Tour de Suisse", "Engadin Skimarathon"],
+            "correct": 0,
+            "praise": "Richtig! Die Lauberhorn-Abfahrt in Wengen ist die längste Abfahrt im Weltcup.",
+            "correction": "Knapp daneben: In Wengen findet jedes Jahr das berühmte Lauberhorn-Rennen statt."
+          },
+          "estimate": {
+            "question": "Wie hoch liegt der offizielle Speed-Rekord am Lauberhorn (in km/h)?",
+            "min": 110,
+            "max": 180,
+            "step": 1,
+            "target": 162,
+            "unit": "km/h",
+            "tolerance": 10
+          },
+          "action": {
+            "prompt": "Technik-Blick (5 Min): Überlegt zu zweit: Warum spielt bei 150 km/h auf Ski die Wartung der Skikanten (Schleifen, Winkel) eine so grosse Rolle?",
+            "placeholder": "Unsere Überlegung zu den Skikanten..."
+          },
+          "codeDigit": "4"
+        },
+        {
+          "category": "kultur",
+          "categoryLabel": "Kultur",
+          "icon": "🎭",
+          "isVocational": false,
+          "title": "Swiss Design – Mechanik trifft Alltag",
+          "infoText": "Die Schweiz ist weltweit bekannt für schlichtes und langlebiges Design: Vom roten Taschenmesser über den Sparschäler «Rex» bis zur SBB-Bahnhofsuhr. Gute Gestaltung bedeutet hier, dass ein Werkzeug oder Gerät Jahrzehnte zuverlässig funktioniert.",
+          "facts": ["🇨🇭 Schweizer Design", "⚙️ Langlebige Technik", "🕰️ SBB-Uhr seit 1944"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/kultur",
+          "quiz": {
+            "question": "In welchem Jahr entwarf Hans Hilfiker die berühmte Schweizer Bahnhofsuhr (SBB)?",
+            "options": ["1912", "1944", "1978", "1995"],
+            "correct": 1,
+            "praise": "Genau! Die SBB-Bahnhofsuhr mit der roten Sekunden-Kelle stammt aus dem Jahr 1944.",
+            "correction": "Nicht ganz: Hans Hilfiker entwickelte die SBB-Bahnhofsuhr im Jahr 1944."
+          },
+          "estimate": {
+            "question": "In welchem Jahr wurde der bekannte Alu-Sparschäler «Rex» in der Schweiz patentiert?",
+            "min": 1920,
+            "max": 1990,
+            "step": 1,
+            "target": 1947,
+            "unit": "",
+            "tolerance": 10
+          },
+          "action": {
+            "prompt": "Alltags-Check (5 Min): Findet ein Schweizer Produkt in eurer Tasche oder im Schulzimmer (z. B. Kugelschreiber, Uhr, Messer) und notiert Marke und Material.",
+            "placeholder": "Produkt, Marke und Material notieren..."
+          },
+          "codeDigit": "9"
+        },
+        {
+          "category": "unterhaltung",
+          "categoryLabel": "Unterhaltung",
+          "icon": "🎬",
+          "isVocational": false,
+          "title": "SRF Jahresrückblick & Mundart-Hits",
+          "infoText": "Im Dezember blicken Radio und Fernsehen (SRF) auf die wichtigsten Momente des Jahres zurück. Bei den Sports Awards oder in Musik-Charts stehen Schweizer Künstlerinnen, Sportler und Alltagshelden im Rampenlicht.",
+          "facts": ["📺 TV-Rückblicke im Dez.", "🎵 Schweizer Mundart", "🏅 Sports Awards"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/unterhaltung",
+          "quiz": {
+            "question": "Wofür steht die Abkürzung «SRF» in der Schweiz?",
+            "options": ["Schweizer Radio und Fernsehen", "Sport-Ring Föderation", "Swiss Rail Foundation", "Sendestelle Region Freiburg"],
+            "correct": 0,
+            "praise": "Richtig! SRF bedeutet Schweizer Radio und Fernsehen.",
+            "correction": "Fast: SRF ist die Abkürzung für Schweizer Radio und Fernsehen."
+          },
+          "estimate": {
+            "question": "Aus wie vielen Kantonen besteht die Schweiz insgesamt?",
+            "min": 16,
+            "max": 34,
+            "step": 1,
+            "target": 26,
+            "unit": "Kantone",
+            "tolerance": 2
+          },
+          "action": {
+            "prompt": "Klassen-Tipp (5 Min): Welcher Song, Film oder welches Video hat euch dieses Jahr besonders gefallen? Schreibt einen kurzen Tipp unten rein.",
+            "placeholder": "Mein Song-/Film-Tipp des Jahres..."
+          },
+          "codeDigit": "2"
+        },
+        {
+          "category": "berufskunde",
+          "categoryLabel": "Berufskunde EBA",
+          "icon": "⚙️",
+          "isVocational": true,
+          "title": "Messmittel: Der Messschieber & Nonius",
+          "infoText": "Der Messschieber ist das wichtigste Handmessmittel für Mechanikpraktiker/innen. Mit ihm kannst du Aussenmasse, Innenmasse, Tiefen und Absätze schnell und genau prüfen. Vor dem Messen immer die Messflächen sauber wischen und auf Null-Stellung achten!",
+          "facts": ["📏 Aussen-, Innen-, Tiefenmass", "🔍 Nonius 1/20 = 0.05 mm", "🧼 Vorher sauber wischen"],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Welche Messgenauigkeit (Ablesewert) hat ein normaler Werkstatt-Messschieber mit 1/20-Nonius?",
+            "options": ["0.5 mm", "0.05 mm", "0.005 mm", "1.0 mm"],
+            "correct": 1,
+            "praise": "Top! Ein 1/20-Nonius teilt 1 Millimeter in 20 Teile: 1 / 20 = 0.05 mm.",
+            "correction": "Merke dir: 1 geteilt durch 20 ergibt 0.05 mm (fünf Hundertstelmillimeter)."
+          },
+          "estimate": {
+            "question": "Wie gross ist der typische Messbereich eines Standard-Taschenmessschiebers?",
+            "min": 50,
+            "max": 300,
+            "step": 10,
+            "target": 150,
+            "unit": "mm",
+            "tolerance": 20
+          },
+          "action": {
+            "prompt": "Werkstatt-Praxis (5 Min): Messt zu zweit einen Gegenstand am Platz (z. B. Kugelschreiber-Durchmesser oder Heftdicke) mit dem Messschieber oder Lineal und notiert das Mass in mm.",
+            "placeholder": "Gegenstand + gemessenes Mass in mm..."
+          },
+          "codeDigit": "5"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "stationName": "Mittelstation",
+      "elevation": 1800,
+      "dateLabel": "Do/Fr, 10./11. Dez.",
+      "unlocked": false,
+      "hintLocked": "Diese Gondel startet am Donnerstag/Freitag, 10./11. Dezember (im Studio freischalten).",
+      "tiles": [
+        {
+          "category": "politik",
+          "categoryLabel": "Politik",
+          "icon": "🏛️",
+          "isVocational": false,
+          "title": "Abstimmungen & Demokratie (Woche 2)",
+          "infoText": "In der Schweiz dürfen Stimmbürgerinnen und Stimmbürger viermal im Jahr über wichtige Vorlagen abstimmen. Auch Initiativen und Referenden sind Teil der direkten Demokratie. Im Unterricht schauen wir, was diese Woche aktuell diskutiert wird.",
+          "facts": ["🗳️ Direkte Demokratie", "📜 Initiative & Referendum"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/news/schweiz",
+          "quiz": {
+            "question": "Wie viele Unterschriften braucht es in der Schweiz für eine Volksinitiative (Verfassungsänderung)?",
+            "options": ["50'000 Unterschriften", "100'000 Unterschriften", "250'000 Unterschriften"],
+            "correct": 1,
+            "praise": "Richtig! Für eine Volksinitiative braucht es 100'000 gültige Unterschriften in 18 Monaten.",
+            "correction": "Für ein Referendum reichen 50'000 – für eine Volksinitiative braucht es 100'000 Unterschriften."
+          },
+          "estimate": {
+            "question": "Ab welchem Alter darf man in der Schweiz auf Bundesebene abstimmen und wählen?",
+            "min": 14,
+            "max": 25,
+            "step": 1,
+            "target": 18,
+            "unit": "Jahre",
+            "tolerance": 1
+          },
+          "action": {
+            "prompt": "News-Check (5 Min): Sucht ein aktuelles Thema dieser Woche aus eurem Wohnkanton und notiert 1 Stichwort dazu.",
+            "placeholder": "Aktuelles Thema aus unserem Kanton..."
+          },
+          "codeDigit": "1"
+        },
+        {
+          "category": "sport",
+          "categoryLabel": "Sport",
+          "icon": "🏆",
+          "isVocational": false,
+          "title": "Eishockey & Wintersport aktuell (Woche 2)",
+          "infoText": "In der National League kämpfen 14 Schweizer Eishockey-Clubs um Punkte für die Playoffs. Gleichzeitig trainieren viele Teams für den traditionellen Spengler Cup Ende Dezember in Davos.",
+          "facts": ["🏒 National League", "❄️ Spengler Cup Davos"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/sport",
+          "quiz": {
+            "question": "In welchem Bündner Ort findet jedes Jahr zwischen Weihnachten und Neujahr der Spengler Cup statt?",
+            "options": ["Chur", "Davos", "St. Moritz", "Arosa"],
+            "correct": 1,
+            "praise": "Genau! Der Spengler Cup wird jedes Jahr im Eisstadion von Davos gespielt.",
+            "correction": "Der Spengler Cup ist das Traditionsturnier des HC Davos in Davos."
+          },
+          "estimate": {
+            "question": "Wie viele Feldspieler + Torhüter stehen pro Team gleichzeitig regulär auf dem Eishockey-Eis (ohne Strafen)?",
+            "min": 3,
+            "max": 11,
+            "step": 1,
+            "target": 6,
+            "unit": "Spieler",
+            "tolerance": 1
+          },
+          "action": {
+            "prompt": "Tabellen-Check (5 Min): Welcher Schweizer Eishockey- oder Fussballclub steht aktuell auf Platz 1? Schaut kurz nach.",
+            "placeholder": "Aktueller Tabellenleader..."
+          },
+          "codeDigit": "6"
+        },
+        {
+          "category": "kultur",
+          "categoryLabel": "Kultur",
+          "icon": "🎭",
+          "isVocational": false,
+          "title": "Schweizer Bahn- und Tunnelbau (Woche 2)",
+          "infoText": "Brücken, Bahnhöfe und lange Alpentunnels prägen die Kultur und Technik der Schweiz. Ohne präzise Vermessung und Stahl- und Maschinenbau würden die Züge heute nicht pünktlich durch die Alpen rollen.",
+          "facts": ["🚆 Gotthard-Basistunnel", "🏗️ Ingenieurskunst CH"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/kultur",
+          "quiz": {
+            "question": "Wie heisst der längste Eisenbahntunnel der Welt in der Schweiz?",
+            "options": ["Lötschberg-Basistunnel", "Gotthard-Basistunnel", "Vereina-Tunnel"],
+            "correct": 1,
+            "praise": "Richtig! Der Gotthard-Basistunnel ist mit 57 km der längste Eisenbahntunnel der Welt.",
+            "correction": "Gemeint ist der 57 km lange Gotthard-Basistunnel."
+          },
+          "estimate": {
+            "question": "Wie lang ist der Gotthard-Basistunnel ungefähr (in Kilometern)?",
+            "min": 15,
+            "max": 85,
+            "step": 1,
+            "target": 57,
+            "unit": "km",
+            "tolerance": 5
+          },
+          "action": {
+            "prompt": "Kurzfrage (5 Min): Überlegt zu zweit: Welche Berufe waren beim Bau eines solchen Tunnels wohl besonders wichtig?",
+            "placeholder": "2 Berufe nennen..."
+          },
+          "codeDigit": "3"
+        },
+        {
+          "category": "unterhaltung",
+          "categoryLabel": "Unterhaltung",
+          "icon": "🎬",
+          "isVocational": false,
+          "title": "Adventsbräuche & Streaming-Trends (Woche 2)",
+          "infoText": "Im Dezember gibt es in der Schweiz viele Traditionen: Samichlaus-Umzüge, Weihnachtsmärkte und beliebte Spendenaktionen wie «Jeder Rappen zählt» bzw. Winter-Specials in Musik und Podcasts.",
+          "facts": ["🎅 Dezember-Bräuche", "🎧 Podcasts & Serien"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch",
+          "quiz": {
+            "question": "Wann wird in vielen Schweizer Gemeinden traditionell der Samichlaus gefeiert?",
+            "options": ["1. Dezember", "6. Dezember", "18. Dezember"],
+            "correct": 1,
+            "praise": "Richtig! Am 6. Dezember ist Nikolaustag (Samichlaus).",
+            "correction": "Traditionell kommt der Samichlaus am 6. Dezember."
+          },
+          "estimate": {
+            "question": "Wie viele Minuten pro Tag schaut oder streamt eine junge Person in der Schweiz durchschnittlich Videos? (Schätzwert ca.)",
+            "min": 30,
+            "max": 240,
+            "step": 10,
+            "target": 120,
+            "unit": "Min/Tag",
+            "tolerance": 30
+          },
+          "action": {
+            "prompt": "Austausch (5 Min): Welcher Weihnachtsmarkt oder Winterbrauch in eurer Region lohnt sich besonders?",
+            "placeholder": "Regionale Empfehlung..."
+          },
+          "codeDigit": "8"
+        },
+        {
+          "category": "berufskunde",
+          "categoryLabel": "Berufskunde EBA",
+          "icon": "⚙️",
+          "isVocational": true,
+          "title": "Bohren & Schnittgeschwindigkeit (vc)",
+          "infoText": "Beim Bohren mit dem Spiralbohrer muss die Drehzahl zum Bohrerdurchmesser und zum Werkstoff passen. Kleine Bohrer drehen schnell, grosse Bohrer drehen langsam! Ein normaler HSS-Spiralbohrer für Stahl hat einen Spitzenwinkel von 118°.",
+          "facts": ["🔩 Spitzenwinkel HSS: 118°", "⚡ Klein = hohe Drehzahl", "💧 Kühlschmierstoff nutzen"],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Welchen Spitzenwinkel hat ein Standard-HSS-Spiralbohrer für Baustahl?",
+            "options": ["60°", "90°", "118°", "140°"],
+            "correct": 2,
+            "praise": "Perfekt! 118° ist der klassische Spitzenwinkel für Standard-HSS-Bohrer.",
+            "correction": "Der Standard-Spitzenwinkel bei HSS-Spiralbohrern beträgt 118°."
+          },
+          "estimate": {
+            "question": "Mit welcher ungefähren Schnittgeschwindigkeit vc (m/min) bohrt man unlegierten Baustahl mit HSS-Bohrer (gekühlt)?",
+            "min": 5,
+            "max": 80,
+            "step": 5,
+            "target": 25,
+            "unit": "m/min",
+            "tolerance": 10
+          },
+          "action": {
+            "prompt": "Rechen-Check (5 Min): Überlegt zu zweit: Wenn ihr von einem Ø 4 mm Bohrer auf einen Ø 12 mm Bohrer wechselt – muss die Drehzahl an der Maschine höher oder tiefer eingestellt werden?",
+            "placeholder": "Höher oder tiefer + kurze Begründung..."
+          },
+          "codeDigit": "2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "stationName": "Höhenweg / Grat",
+      "elevation": 2600,
+      "dateLabel": "Do/Fr, 17./18. Dez.",
+      "unlocked": false,
+      "hintLocked": "Diese Gondel öffnet am Donnerstag/Freitag, 17./18. Dezember (im Studio freischalten).",
+      "tiles": [
+        {
+          "category": "politik",
+          "categoryLabel": "Politik",
+          "icon": "🏛️",
+          "isVocational": false,
+          "title": "Energie & Strom im Winter (Woche 3)",
+          "infoText": "Im Winter braucht die Schweiz viel Strom zum Heizen, Beleuchten und für Maschinen in Werkstätten. Stauseen in den Alpen speichern Wasser, damit auch an kalten Tagen genügend Elektrizität produziert werden kann.",
+          "facts": ["⚡ Wasserkraft in den Alpen", "❄️ Hoher Winterbedarf"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/news/schweiz",
+          "quiz": {
+            "question": "Welche Energiequelle liefert in der Schweiz den grössten Teil des Stroms?",
+            "options": ["Kohlekraftwerke", "Wasserkraft", "Windräder"],
+            "correct": 1,
+            "praise": "Genau! Rund 55–60 % des Schweizer Stroms stammt aus Wasserkraft.",
+            "correction": "In der Schweiz ist Wasserkraft die wichtigste Stromquelle."
+          },
+          "estimate": {
+            "question": "Wie viele Prozent des Schweizer Stroms stammen ungefähr aus Wasserkraft?",
+            "min": 10,
+            "max": 95,
+            "step": 5,
+            "target": 60,
+            "unit": "%",
+            "tolerance": 10
+          },
+          "action": {
+            "prompt": "Energie-Tipp (5 Min): Nennt 1 konkrete Massnahme, wie man in eurer Werkstatt oder im Schulzimmer einfach Strom sparen kann.",
+            "placeholder": "Unser Stromspar-Tipp..."
+          },
+          "codeDigit": "6"
+        },
+        {
+          "category": "sport",
+          "categoryLabel": "Sport",
+          "icon": "🏆",
+          "isVocational": false,
+          "title": "Jahres-Highlights Schweizer Sport (Woche 3)",
+          "infoText": "Kurz vor Weihnachten werden oft die besten Sportlerinnen, Sportler und Teams der Schweiz ausgezeichnet. Neben Ski und Fussball glänzen auch Schwingen, Leichtathletik, Radsport und Unihockey.",
+          "facts": ["🏅 Schweizer Sportjahr", "🇨🇭 Breite Sportkultur"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/sport",
+          "quiz": {
+            "question": "Wie heisst der traditionelle Schweizer Nationalsport im Sägemehlring?",
+            "options": ["Schwingen", "Hornussen", "Steinstossen"],
+            "correct": 0,
+            "praise": "Richtig! Schwingen findet im Sägemehlring statt.",
+            "correction": "Im Sägemehlring wird geschwungen (Schwingen)."
+          },
+          "estimate": {
+            "question": "Wie schwer ist der berühmte Unspunnenstein ungefähr (in Kilogramm)?",
+            "min": 40,
+            "max": 120,
+            "step": 1,
+            "target": 84,
+            "unit": "kg",
+            "tolerance": 8
+          },
+          "action": {
+            "prompt": "Sport-Moment (5 Min): Welcher Schweizer Sport-Moment hat euch in diesem Jahr am meisten beeindruckt?",
+            "placeholder": "Mein Sport-Moment..."
+          },
+          "codeDigit": "3"
+        },
+        {
+          "category": "kultur",
+          "categoryLabel": "Kultur",
+          "icon": "🎭",
+          "isVocational": false,
+          "title": "Vier Sprachen in einem Land (Woche 3)",
+          "infoText": "Die Schweiz verbindet vier Landessprachen: Deutsch, Französisch, Italienisch und Rätoromanisch. Auch auf Werkzeug-Anleitungen, Sicherheitszeichen und in nationalen News begegnen uns diese Sprachen täglich.",
+          "facts": ["🗣️ 4 Landessprachen", "🇨🇭 Mehrsprachige Schweiz"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/kultur",
+          "quiz": {
+            "question": "Welche vier Sprachen sind die offiziellen Landessprachen der Schweiz?",
+            "options": ["Deutsch, Englisch, Französisch, Italienisch", "Deutsch, Französisch, Italienisch, Rätoromanisch", "Deutsch, Französisch, Spanisch, Romanisch"],
+            "correct": 1,
+            "praise": "Stimmt genau! Deutsch, Französisch, Italienisch und Rätoromanisch.",
+            "correction": "Englisch ist keine Landessprache – richtig sind Deutsch, Französisch, Italienisch und Rätoromanisch."
+          },
+          "estimate": {
+            "question": "Wie viel Prozent der Schweizer Wohnbevölkerung sprechen hauptsächlich Deutsch (ungefähr)?",
+            "min": 30,
+            "max": 90,
+            "step": 2,
+            "target": 62,
+            "unit": "%",
+            "tolerance": 10
+          },
+          "action": {
+            "prompt": "Sprach-Check (5 Min): Wie heisst «Werkstatt» oder «Schraube» auf Französisch oder Italienisch? Schaut kurz nach.",
+            "placeholder": "Übersetzung notieren..."
+          },
+          "codeDigit": "9"
+        },
+        {
+          "category": "unterhaltung",
+          "categoryLabel": "Unterhaltung",
+          "icon": "🎬",
+          "isVocational": false,
+          "title": "Schweizer Erfindungen & Rekorde (Woche 3)",
+          "infoText": "Wusstest du, dass der Reissverschluss (weiterentwickelt in der Schweiz), der Klettverschluss (Velcro) und der Aluminium-Sparschäler Schweizer Ideen sind? Oft entstand eine Erfindung aus genauer Beobachtung im Alltag.",
+          "facts": ["💡 Velcro (Klettverschluss)", "🇨🇭 Erfindergeist"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch",
+          "quiz": {
+            "question": "Was inspirierte den Schweizer Ingenieur George de Mestral zur Erfindung des Klettverschlusses?",
+            "options": ["Kletten-Früchte im Fell seines Hundes", "Spinnweben im Wald", "Tannenzapfen im Schnee"],
+            "correct": 0,
+            "praise": "Genau! Unter dem Mikroskop sah er die winzigen Häkchen der Kletten.",
+            "correction": "Es waren Kletten-Früchte, die im Fell seines Hundes hängen blieben."
+          },
+          "estimate": {
+            "question": "In welchem Jahr meldete George de Mestral den Klettverschluss zum Patent an?",
+            "min": 1920,
+            "max": 1980,
+            "step": 1,
+            "target": 1951,
+            "unit": "",
+            "tolerance": 10
+          },
+          "action": {
+            "prompt": "Ideen-Check (5 Min): Wo nutzt du selbst im Alltag oder bei der Arbeitskleidung einen Klettverschluss?",
+            "placeholder": "Beispiel nennen..."
+          },
+          "codeDigit": "1"
+        },
+        {
+          "category": "berufskunde",
+          "categoryLabel": "Berufskunde EBA",
+          "icon": "⚙️",
+          "isVocational": true,
+          "title": "Gewindeschneiden: Kernloch M8 & M10",
+          "infoText": "Wenn du ein Innengewinde schneiden willst, musst du zuerst das richtige Kernloch vorbohren. Für metrische ISO-Regelgewinde gilt die praktische Faustformel: Kernloch-Durchmesser ≈ Aussendurchmesser minus Steigung (d - P).",
+          "facts": ["🔩 M10: Steigung 1.5 mm", "📐 Formel: d - P", "🛢️ Schneidöl verwenden"],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Welchen Spiralbohrer brauchst du für das Kernloch eines M10-Gewindes (Steigung P = 1.5 mm)?",
+            "options": ["8.0 mm", "8.5 mm", "9.0 mm", "10.0 mm"],
+            "correct": 1,
+            "praise": "Exakt! 10.0 mm minus 1.5 mm ergibt 8.5 mm Kernlochbohrer.",
+            "correction": "Mit der Faustformel d - P rechnest du 10 - 1.5 = 8.5 mm."
+          },
+          "estimate": {
+            "question": "Welcher Kernlochbohrer wird für ein M8-Gewinde (Steigung 1.25 mm) nach Tabelle verwendet?",
+            "min": 5.0,
+            "max": 9.0,
+            "step": 0.1,
+            "target": 6.8,
+            "unit": "mm",
+            "tolerance": 0.3
+          },
+          "action": {
+            "prompt": "Werkstatt-Tipp (5 Min): Warum dreht man beim Schneiden von Hand mit dem Gewindebohrer nach jeder halben Umdrehung ein Stück zurück?",
+            "placeholder": "Kurze Erklärung zum Spanbrechen..."
+          },
+          "codeDigit": "4"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "stationName": "Gipfelstation",
+      "elevation": 3400,
+      "dateLabel": "Do, 24. Dez. Spezial",
+      "unlocked": false,
+      "hintLocked": "Der Gipfel öffnet zum Weihnachtsspezial in der 4. Adventswoche!",
+      "tiles": [
+        {
+          "category": "politik",
+          "categoryLabel": "Politik",
+          "icon": "🏛️",
+          "isVocational": false,
+          "title": "Neues Jahr – Neue Gesetze in der Schweiz",
+          "infoText": "Jedes Jahr am 1. Januar treten in der Schweiz neue Regeln in Kraft – zum Beispiel im Strassenverkehr, bei Abgaben oder in der Berufsbildung. Sich kurz zu informieren hilft, im Betrieb und Alltag up to date zu bleiben.",
+          "facts": ["📅 Start am 1. Januar", "⚖️ Regeln im Alltag"],
+          "imageUrl": "",
+          "externalLink": "https://www.admin.ch",
+          "quiz": {
+            "question": "Wer wählt in der Schweiz jedes Jahr die Bundespräsidentin oder den Bundespräsidenten?",
+            "options": ["Das Volk direkt", "Die Vereinigte Bundesversammlung", "Die Kantonsregierungen"],
+            "correct": 1,
+            "praise": "Richtig! Die Vereinigte Bundesversammlung wählt im Dezember für jeweils ein Jahr.",
+            "correction": "Im Dezember wählt die Vereinigte Bundesversammlung jeweils eine Person aus dem Bundesrat für ein Jahr."
+          },
+          "estimate": {
+            "question": "Wie viele Jahre dauert die Amtszeit einer Bundespräsidentin / eines Bundespräsidenten in der Schweiz?",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "target": 1,
+            "unit": "Jahr(e)",
+            "tolerance": 0
+          },
+          "action": {
+            "prompt": "Ausblick (5 Min): Was möchtest du im neuen Jahr im Betrieb oder in der Berufsschule erreichen?",
+            "placeholder": "Mein Ziel fürs neue Jahr..."
+          },
+          "codeDigit": "3"
+        },
+        {
+          "category": "sport",
+          "categoryLabel": "Sport",
+          "icon": "🏆",
+          "isVocational": false,
+          "title": "Wintersport über die Festtage",
+          "infoText": "Zwischen Weihnachten und Neujahr pausiert kaum ein Wintersport: Vierschanzentournee, Ski-Rennen in Bormio und Adelboden sowie Eishockey-Turniere begeistern Millionen Fans vor dem Fernseher und auf den Pisten.",
+          "facts": ["🎿 Festtags-Sport", "🏔️ Skispringen & Ski"],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch/sport",
+          "quiz": {
+            "question": "Wie heisst der berühmte Schweizer Skisprung-Olympiasieger aus dem Toggenburg?",
+            "options": ["Simon Ammann", "Didier Cuche", "Dario Cologna"],
+            "correct": 0,
+            "praise": "Volltreffer! Simon Ammann holte 4× Olympia-Gold im Skispringen.",
+            "correction": "Simon Ammann ist der 4-fache Schweizer Skisprung-Olympiasieger."
+          },
+          "estimate": {
+            "question": "Wie weit fliegen die Profis bei einer Grossschanze wie in Engelberg ungefähr (in Metern)?",
+            "min": 80,
+            "max": 180,
+            "step": 5,
+            "target": 135,
+            "unit": "m",
+            "tolerance": 15
+          },
+          "action": {
+            "prompt": "Ferien-Plan (5 Min): Welche Bewegung oder welchen Sport machst du selbst am liebsten in den Winterferien?",
+            "placeholder": "Mein Winter-Favorit..."
+          },
+          "codeDigit": "5"
+        },
+        {
+          "category": "kultur",
+          "categoryLabel": "Kultur",
+          "icon": "🎭",
+          "isVocational": false,
+          "title": "Feiertage & Zeit für Familie/Freunde",
+          "infoText": "Weihnachten wird in der Schweiz ganz unterschiedlich gefeiert: mit Fondue Chinoise, Guetzli, einem Spaziergang im Schnee oder einfach mit ein paar ruhigen Tagen ohne Wecker. Nach einem intensiven Lehrjahr tut Erholung gut.",
+          "facts": ["🍪 Weihnachtsguetzli", "🕯️ Erholung nach der Arbeit"],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Welches traditionelle Schweizer Weihnachtsgebäck wird mit Anis zubereitet und auf ein Model gedrückt?",
+            "options": ["Mailänderli", "Springerle / Chräbeli", "Brunsli"],
+            "correct": 1,
+            "praise": "Stimmt! Anis-Chräbeli bzw. Springerle werden mit Anis gebacken.",
+            "correction": "Anis steckt klassisch in Chräbeli und Springerle."
+          },
+          "estimate": {
+            "question": "Wie viele Tage hat ein normales Schaltjahr?",
+            "min": 360,
+            "max": 370,
+            "step": 1,
+            "target": 366,
+            "unit": "Tage",
+            "tolerance": 1
+          },
+          "action": {
+            "prompt": "Jahres-Danke (5 Min): Wem im Lehrbetrieb oder in der Schule möchtest du vor den Ferien kurz Danke sagen?",
+            "placeholder": "Kurz notieren..."
+          },
+          "codeDigit": "0"
+        },
+        {
+          "category": "unterhaltung",
+          "categoryLabel": "Unterhaltung",
+          "icon": "🎬",
+          "isVocational": false,
+          "title": "Silvester & Neujahrs-Feuerwerk",
+          "infoText": "Zum Jahreswechsel leuchtet in vielen Schweizer Städten am See ein grosses Feuerwerk – oder moderne Drohnen-Shows zeichnen bunte Bilder in den Nachthimmel. Gleichzeitig starten viele mit guten Vorsätzen ins neue Jahr.",
+          "facts": ["🎆 Silvester in der CH", "🛸 Drohnen-Shows"],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "In welcher Schweizer Stadt findet traditionell das grösste See-Silvesterfeuerwerk statt?",
+            "options": ["Zürich", "Aarau", "Chur"],
+            "correct": 0,
+            "praise": "Richtig! Der «Silvesterzauber» am Zürcher Seebecken zieht jedes Jahr Zehntausende an.",
+            "correction": "Der grosse «Silvesterzauber» steigt am Zürichsee in Zürich."
+          },
+          "estimate": {
+            "question": "Um wie viel Uhr stösst man an Silvester klassisch auf das neue Jahr an? (Stunde im 24h-Format)",
+            "min": 18,
+            "max": 24,
+            "step": 1,
+            "target": 24,
+            "unit": "Uhr",
+            "tolerance": 0
+          },
+          "action": {
+            "prompt": "Gipfel-Gruss (5 Min): Formuliert zu zweit einen kurzen Weihnachtswunsch für die ganze Klasse.",
+            "placeholder": "Unser Klassen-Gruss..."
+          },
+          "codeDigit": "2"
+        },
+        {
+          "category": "berufskunde",
+          "categoryLabel": "Berufskunde EBA",
+          "icon": "⚙️",
+          "isVocational": true,
+          "title": "Arbeitssicherheit & PSA in der Werkstatt",
+          "infoText": "Deine Gesundheit ist wichtiger als jedes Werkstück! In der mechanischen Werkstatt gilt: Schutzbrille auf bei allen spanabhebenden Arbeiten, enganliegende Kleidung tragen und an rotierenden Maschinen (Bohrmaschine, Drehmaschine) NIEMALS Handschuhe tragen – Einzugsgefahr!",
+          "facts": ["🥽 Schutzbrille Pflicht", "🚫 Keine Handschuhe am Bohrer", "🧹 Späne mit Pinsel/Haken"],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Was ist an einer laufenden Ständerbohrmaschine streng verboten?",
+            "options": ["Schutzbrille tragen", "Arbeitshandschuhe tragen", "Werkstück im Maschinenschraubstock spannen"],
+            "correct": 1,
+            "praise": "Richtig! Handschuhe können vom rotierenden Bohrer erfasst werden (schwere Einzugsgefahr).",
+            "correction": "Achtung: Arbeitshandschuhe dürfen an rotierenden Maschinen niemals getragen werden!"
+          },
+          "estimate": {
+            "question": "Ab welchem Lärmpegel in dB(A) muss in der Werkstatt laut SUVA-Regel Gehörschutz bereitgestellt bzw. bei Dauerlärm getragen werden?",
+            "min": 55,
+            "max": 115,
+            "step": 5,
+            "target": 85,
+            "unit": "dB(A)",
+            "tolerance": 5
+          },
+          "action": {
+            "prompt": "Sicherheits-Check (5 Min): Nennt 3 Dinge, die ihr in der Werkstatt vor dem Start an einer Bohrmaschine kontrolliert.",
+            "placeholder": "3 Sicherheitschecks vor dem Bohren..."
+          },
+          "codeDigit": "8"
+        }
+      ]
+    }
+  ]
+};
+
+    const STORAGE_KEY = 'eba_gipfeltour_progress_v1';
+    let APP_DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+    let activeStageIdx = 0;
+    let activeTileIdx = null;
+    let activeStep = 'info';
+
+    let userProgress = loadProgress();
+
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      return { name: '', tiles: {}, notifiedStages: {} };
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress));
+      } catch (e) {}
+    }
+
+    function tileKey(stageId, cat) {
+      return `s${stageId}_${cat}`;
+    }
+
+    function getTileState(stageId, cat) {
+      const k = tileKey(stageId, cat);
+      if (!userProgress.tiles[k]) {
+        userProgress.tiles[k] = { quizDone: false, quizPicked: null, estDone: false, estVal: null, actionNote: '', solved: false };
+      }
+      return userProgress.tiles[k];
+    }
+
+    function saveStudentName() {
+      userProgress.name = document.getElementById('student-name').value;
+      saveProgress();
+    }
+
+    async function initApp() {
+      document.getElementById('student-name').value = userProgress.name || '';
+      if (window.location.protocol !== 'file:' && window.location.protocol !== 'about:') {
+        try {
+          const res = await fetch('etappen.json?t=' + Date.now(), { cache: 'no-store' });
+          if (res.ok) {
+            const remote = await res.json();
+            if (remote && Array.isArray(remote.stages) && remote.stages.length > 0) {
+              APP_DATA = remote;
+              document.getElementById('data-source-badge').textContent = '🟢 Live-Daten (etappen.json) aktiv';
+            }
+          }
+        } catch (err) {
+          console.log('Nutze eingebaute Standard-Daten:', err);
+        }
+      }
+      // Select latest unlocked stage automatically
+      let latestUnlocked = 0;
+      APP_DATA.stages.forEach((st, idx) => { if (st.unlocked) latestUnlocked = idx; });
+      activeStageIdx = latestUnlocked;
+      renderAll();
+    }
+
+    function renderAll() {
+      document.getElementById('app-title').textContent = APP_DATA.config.title || 'Schweizer Gipfel-Tour 🎄';
+      document.getElementById('app-subtitle').textContent = APP_DATA.config.subtitle || '';
+      renderStats();
+      renderMountainMap();
+      renderStageView();
+    }
+
+    function renderStats() {
+      let solvedCount = 0;
+      let totalCount = 0;
+      let highestElev = APP_DATA.stages[0]?.elevation || 1000;
+
+      APP_DATA.stages.forEach(st => {
+        let stageSolved = 0;
+        st.tiles.forEach(t => {
+          totalCount++;
+          if (getTileState(st.id, t.category).solved) {
+            solvedCount++;
+            stageSolved++;
+          }
+        });
+        if (st.unlocked && stageSolved > 0 && st.elevation > highestElev) {
+          highestElev = st.elevation;
+        }
+      });
+
+      const pts = solvedCount * (APP_DATA.config.pointsPerTile || 25);
+      const maxPts = totalCount * (APP_DATA.config.pointsPerTile || 25);
+      const elevBonus = solvedCount * 120;
+      const displayElev = Math.min(3400, 1000 + elevBonus);
+
+      document.getElementById('elevation-pill').textContent = `⛰️ ${displayElev.toLocaleString('de-CH')} m ü. M.`;
+      document.getElementById('points-pill').textContent = `🏆 ${pts} / ${maxPts} Pkt`;
+      document.getElementById('overall-progress-label').textContent = `${solvedCount} / ${totalCount} Kacheln gelöst`;
+    }
+
+    function renderMountainMap() {
+      const coords = [
+        { x: 95, y: 134 },
+        { x: 290, y: 104 },
+        { x: 495, y: 68 },
+        { x: 700, y: 30 }
+      ];
+      const svgNodes = document.getElementById('svg-nodes');
+      const tabsEl = document.getElementById('stage-tabs');
+      let nodesHtml = '';
+      let tabsHtml = '';
+      let lastUnlockedCoordIdx = 0;
+
+      APP_DATA.stages.forEach((st, idx) => {
+        const pt = coords[idx] || { x: 100 + idx * 180, y: 120 - idx * 25 };
+        const solvedInStage = st.tiles.filter(t => getTileState(st.id, t.category).solved).length;
+        const allDone = solvedInStage === st.tiles.length && st.tiles.length > 0;
+        if (st.unlocked) lastUnlockedCoordIdx = idx;
+
+        const isSel = idx === activeStageIdx;
+        const circleFill = allDone ? '#059669' : (st.unlocked ? (isSel ? '#0284c7' : '#ffffff') : '#e2e8f0');
+        const circleStroke = allDone ? '#059669' : (st.unlocked ? '#0284c7' : '#94a3b8');
+        const textFill = (allDone || (st.unlocked && isSel)) ? '#ffffff' : '#334155';
+
+        nodesHtml += `
+          <g style="cursor: pointer;" onclick="selectStage(${idx})">
+            <circle cx="${pt.x}" cy="${pt.y}" r="${isSel ? 17 : 14}" fill="${circleFill}" stroke="${circleStroke}" stroke-width="3" />
+            <text x="${pt.x}" y="${pt.y + 5}" text-anchor="middle" font-size="13" font-weight="800" fill="${textFill}">${allDone ? '✓' : (st.unlocked ? st.id : '🔒')}</text>
+            <text x="${pt.x}" y="${pt.y + 30}" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">${escapeHtml(st.stationName)}</text>
+          </g>
+        `;
+
+        const cls = ['stage-btn', isSel ? 'active' : '', !st.unlocked ? 'locked' : ''].join(' ');
+        tabsHtml += `
+          <button class="${cls}" onclick="selectStage(${idx})">
+            <div class="stage-btn-top">
+              <span>${st.id}. ${escapeHtml(st.stationName)}</span>
+              <span>${allDone ? '✅' : (st.unlocked ? `${solvedInStage}/${st.tiles.length}` : '🔒')}</span>
+            </div>
+            <div class="stage-btn-sub">${escapeHtml(st.dateLabel)} · ${st.elevation} m</div>
+          </button>
+        `;
+      });
+
+      const linePts = coords.slice(0, lastUnlockedCoordIdx + 1).map(c => `${c.x},${c.y}`).join(' ');
+      document.getElementById('svg-progress-line').setAttribute('points', linePts);
+      svgNodes.innerHTML = nodesHtml;
+      tabsEl.innerHTML = tabsHtml;
+    }
+
+    function selectStage(idx) {
+      activeStageIdx = idx;
+      activeTileIdx = null;
+      renderMountainMap();
+      renderStageView();
+    }
+
+    function renderStageView() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const solvedInStage = stage.tiles.filter(t => getTileState(stage.id, t.category).solved).length;
+
+      document.getElementById('stage-title').textContent = `Station ${stage.id}: ${stage.stationName} (${stage.elevation.toLocaleString('de-CH')} m)`;
+      document.getElementById('stage-meta').textContent = `${stage.dateLabel} · ${solvedInStage} / ${stage.tiles.length} Kacheln gelöst`;
+
+      // Vault code
+      const vaultWrap = document.getElementById('vault-wrap');
+      vaultWrap.classList.toggle('hidden', APP_DATA.config.showVaultCode === false);
+      document.getElementById('vault-digits').innerHTML = stage.tiles.map(t => {
+        const st = getTileState(stage.id, t.category);
+        const cls = ['vault-digit', t.isVocational ? 'vocational' : '', st.solved ? 'unlocked' : ''].join(' ');
+        return `<span class="${cls}" title="${escapeHtml(t.categoryLabel)}">${st.solved ? escapeHtml(t.codeDigit || '0') : '?'}</span>`;
+      }).join('');
+
+      const lockedEl = document.getElementById('locked-notice');
+      const gridEl = document.getElementById('tiles-grid');
+      const wsEl = document.getElementById('workspace-card');
+      const summitEl = document.getElementById('summit-card');
+
+      if (!stage.unlocked) {
+        lockedEl.classList.remove('hidden');
+        document.getElementById('locked-title').textContent = `${stage.stationName} (${stage.dateLabel}) noch geschlossen`;
+        document.getElementById('locked-msg').textContent = stage.hintLocked || 'Diese Etappe wird bald freigeschaltet.';
+        gridEl.classList.add('hidden');
+        wsEl.classList.add('hidden');
+        summitEl.classList.add('hidden');
+        return;
+      }
+
+      lockedEl.classList.add('hidden');
+      gridEl.classList.remove('hidden');
+
+      gridEl.innerHTML = stage.tiles.map((t, idx) => {
+        const st = getTileState(stage.id, t.category);
+        const cls = [
+          'tile-card',
+          t.isVocational ? 'vocational' : '',
+          idx === activeTileIdx ? 'active' : '',
+          st.solved ? 'solved' : ''
+        ].join(' ');
+        return `
+          <button class="${cls}" onclick="openTile(${idx})">
+            <div>
+              <div class="tile-top">
+                <span class="cat-pill">${escapeHtml(t.icon)} ${escapeHtml(t.categoryLabel)}</span>
+                <span class="tile-status ${st.solved ? 'done' : ''}">${st.solved ? '✓ Gelöst' : 'Offen'}</span>
+              </div>
+              <div class="tile-title" style="margin-top: 8px;">${escapeHtml(t.title)}</div>
+            </div>
+            <div class="tile-foot">
+              <span>${t.isVocational ? 'Werkstatt &amp; Praxis' : 'Aktuelles CH'}</span>
+              <span>${st.solved ? 'Code: ' + escapeHtml(t.codeDigit) : '+25 Pkt →'}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      if (activeTileIdx !== null) {
+        renderWorkspace();
+      } else {
+        wsEl.classList.add('hidden');
+      }
+
+      // Summit card
+      if (solvedInStage === stage.tiles.length && stage.tiles.length > 0) {
+        summitEl.classList.remove('hidden');
+        const fullCode = stage.tiles.map(t => t.codeDigit || '0').join('');
+        document.getElementById('summit-code').textContent = fullCode;
+        const ntfyBtn = document.getElementById('ntfy-send-btn');
+        ntfyBtn.classList.toggle('hidden', !APP_DATA.config.ntfyTopic);
+      } else {
+        summitEl.classList.add('hidden');
+      }
+    }
+
+    function openTile(idx) {
+      activeTileIdx = idx;
+      activeStep = 'info';
+      renderStageView();
+      const ws = document.getElementById('workspace-card');
+      ws.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function closeWorkspace() {
+      activeTileIdx = null;
+      renderStageView();
+    }
+
+    function renderWorkspace() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const tile = stage.tiles[activeTileIdx];
+      const st = getTileState(stage.id, tile.category);
+
+      const ws = document.getElementById('workspace-card');
+      ws.classList.remove('hidden');
+      ws.classList.toggle('vocational', !!tile.isVocational);
+
+      document.getElementById('ws-cat-pill').textContent = `${tile.icon} ${tile.categoryLabel}`;
+      document.getElementById('ws-title').textContent = tile.title;
+
+      // Info
+      const imgEl = document.getElementById('ws-img');
+      if (tile.imageUrl) {
+        imgEl.src = tile.imageUrl;
+        imgEl.classList.remove('hidden');
+      } else {
+        imgEl.classList.add('hidden');
+      }
+      document.getElementById('ws-info-text').textContent = tile.infoText;
+      document.getElementById('ws-facts').innerHTML = (tile.facts || []).map(f => `<span class="fact-badge">${escapeHtml(f)}</span>`).join('');
+      const linkEl = document.getElementById('ws-link');
+      if (tile.externalLink) {
+        linkEl.href = tile.externalLink;
+        linkEl.classList.remove('hidden');
+      } else {
+        linkEl.classList.add('hidden');
+      }
+
+      // Quiz
+      document.getElementById('ws-q-text').textContent = tile.quiz.question;
+      document.getElementById('ws-q-opts').innerHTML = tile.quiz.options.map((opt, i) => {
+        let extra = '';
+        if (st.quizDone) {
+          if (i === tile.quiz.correct) extra = ' correct';
+          else if (i === st.quizPicked) extra = ' wrong';
+        }
+        return `<button class="quiz-opt${extra}" onclick="answerQuiz(${i})">${String.fromCharCode(65 + i)}) ${escapeHtml(opt)}</button>`;
+      }).join('');
+
+      const qfb = document.getElementById('ws-q-fb');
+      if (st.quizDone) {
+        qfb.classList.remove('hidden', 'ok', 'err');
+        const isOk = st.quizPicked === tile.quiz.correct;
+        qfb.classList.add(isOk ? 'ok' : 'err');
+        qfb.textContent = (isOk ? '✅ ' : '❌ ') + (isOk ? tile.quiz.praise : tile.quiz.correction);
+      } else {
+        qfb.classList.add('hidden');
+      }
+
+      // Estimate
+      const est = tile.estimate;
+      document.getElementById('ws-est-q').textContent = est.question;
+      document.getElementById('ws-est-min').textContent = `${est.min}${est.unit ? ' ' + est.unit : ''}`;
+      document.getElementById('ws-est-max').textContent = `${est.max}${est.unit ? ' ' + est.unit : ''}`;
+      const sl = document.getElementById('ws-est-slider');
+      sl.min = est.min;
+      sl.max = est.max;
+      sl.step = est.step || 1;
+      sl.value = st.estVal !== null ? st.estVal : Math.round((Number(est.min) + Number(est.max)) / 2);
+      updateEstimateDisplay();
+
+      const efb = document.getElementById('ws-est-fb');
+      if (st.estDone) {
+        showEstimateFeedback(Number(sl.value), est);
+      } else {
+        efb.classList.add('hidden');
+      }
+
+      // Action
+      document.getElementById('ws-act-prompt').textContent = tile.action.prompt;
+      const ta = document.getElementById('ws-act-input');
+      ta.placeholder = tile.action.placeholder || 'Kurze Notiz eintragen...';
+      ta.value = st.actionNote || '';
+
+      document.getElementById('ws-solved-note').classList.toggle('hidden', !st.solved);
+      document.getElementById('ws-complete-btn').textContent = st.solved
+        ? `✓ Gelöst (Code-Ziffer: ${tile.codeDigit})`
+        : 'Auftrag erledigt & Code-Ziffer freischalten 🔓';
+
+      setStep(activeStep);
+    }
+
+    function setStep(step) {
+      activeStep = step;
+      ['info', 'quiz', 'estimate', 'action'].forEach(s => {
+        document.getElementById('panel-' + s).classList.toggle('hidden', s !== step);
+        document.getElementById('stab-' + s).classList.toggle('active', s === step);
+      });
+    }
+
+    function answerQuiz(idx) {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const tile = stage.tiles[activeTileIdx];
+      const st = getTileState(stage.id, tile.category);
+      st.quizDone = true;
+      st.quizPicked = idx;
+      saveProgress();
+      renderWorkspace();
+    }
+
+    function updateEstimateDisplay() {
+      const tile = APP_DATA.stages[activeStageIdx].tiles[activeTileIdx];
+      const val = document.getElementById('ws-est-slider').value;
+      document.getElementById('ws-est-val').textContent = `${val}${tile.estimate.unit ? ' ' + tile.estimate.unit : ''}`;
+    }
+
+    function checkEstimate() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const tile = stage.tiles[activeTileIdx];
+      const st = getTileState(stage.id, tile.category);
+      const val = Number(document.getElementById('ws-est-slider').value);
+      st.estDone = true;
+      st.estVal = val;
+      saveProgress();
+      showEstimateFeedback(val, tile.estimate);
+    }
+
+    function showEstimateFeedback(val, est) {
+      const diff = Math.abs(val - Number(est.target));
+      const tol = Number(est.tolerance || 5);
+      const efb = document.getElementById('ws-est-fb');
+      efb.classList.remove('hidden');
+      const unitStr = est.unit ? ' ' + est.unit : '';
+      let msg = 'Knapp vorbei – gut geschätzt!';
+      if (diff === 0) msg = 'Volltreffer auf den Punkt!';
+      else if (diff <= tol) msg = 'Sehr nah dran – super Augenmass!';
+      efb.textContent = `🎯 Richtige Lösung: ${est.target}${unitStr} (dein Tipp: ${val}${unitStr}). ${msg}`;
+    }
+
+    function saveActionNote() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const tile = stage.tiles[activeTileIdx];
+      const st = getTileState(stage.id, tile.category);
+      st.actionNote = document.getElementById('ws-act-input').value;
+      saveProgress();
+    }
+
+    function completeTile() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const tile = stage.tiles[activeTileIdx];
+      const st = getTileState(stage.id, tile.category);
+      const wasSolved = st.solved;
+      st.actionNote = document.getElementById('ws-act-input').value;
+      st.solved = true;
+      saveProgress();
+
+      renderStats();
+      renderMountainMap();
+      renderStageView();
+
+      const allDone = stage.tiles.every(t => getTileState(stage.id, t.category).solved);
+      if (!wasSolved) {
+        burstConfetti(allDone ? 90 : 35);
+      }
+      if (allDone) {
+        document.getElementById('summit-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function copyStageCode() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const code = stage.tiles.map(t => t.codeDigit || '0').join('');
+      navigator.clipboard?.writeText(code).then(() => {
+        document.getElementById('summit-status-msg').textContent = `✅ Code "${code}" in die Zwischenablage kopiert – jetzt in OLAT einfügen!`;
+      }).catch(() => {
+        document.getElementById('summit-status-msg').textContent = `Code: ${code}`;
+      });
+    }
+
+    function copyReflections() {
+      const stage = APP_DATA.stages[activeStageIdx];
+      const name = userProgress.name || 'Team';
+      const lines = [`Gipfel-Tour Etappe ${stage.id} (${stage.stationName}) – ${name}`];
+      stage.tiles.forEach(t => {
+        const st = getTileState(stage.id, t.category);
+        lines.push(`• ${t.categoryLabel}: ${st.actionNote ? st.actionNote.trim() : '(erledigt)'}`);
+      });
+      navigator.clipboard?.writeText(lines.join('\n')).then(() => {
+        document.getElementById('summit-status-msg').textContent = '✅ Alle 5 Notizen wurden kopiert!';
+      });
+    }
+
+    function sendNtfyReport() {
+      const topic = (APP_DATA.config.ntfyTopic || '').trim();
+      if (!topic) return;
+      const stage = APP_DATA.stages[activeStageIdx];
+      const name = (userProgress.name || 'Unbekanntes Team').trim();
+      const code = stage.tiles.map(t => t.codeDigit || '0').join('');
+      const msgEl = document.getElementById('summit-status-msg');
+      msgEl.textContent = '⏳ Sende Meldung an Lehrperson...';
+
+      fetch('https://ntfy.sh/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          topic: topic,
+          title: `Gipfel-Tour Etappe ${stage.id}: ${name}`,
+          message: `${name} hat Station ${stage.id} (${stage.stationName}) abgeschlossen!\nEtappen-Code: ${code}\nZeit: ${new Date().toLocaleString('de-CH')}`,
+          priority: 3,
+          tags: ['mountain', 'white_check_mark']
+        })
+      }).then(res => {
+        if (res.ok) {
+          msgEl.textContent = '✅ Erfolgsmeldung wurde an die Lehrperson gesendet!';
+        } else {
+          msgEl.textContent = '⚠️ Meldung konnte nicht gesendet werden – zeige einfach den Code in OLAT.';
+        }
+      }).catch(() => {
+        msgEl.textContent = '⚠️ Keine Verbindung zu ntfy.sh – trage den Code direkt in OLAT ein.';
+      });
+    }
+
+    function resetProgress() {
+      if (!confirm('Möchtest du deinen gesamten Fortschritt auf diesem Gerät wirklich zurücksetzen?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      userProgress = { name: '', tiles: {}, notifiedStages: {} };
+      document.getElementById('student-name').value = '';
+      activeTileIdx = null;
+      renderAll();
+    }
+
+    function burstConfetti(count) {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const colors = ['#dc2626', '#0284c7', '#059669', '#d97706', '#ffffff'];
+      const particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: canvas.height * 0.4 + (Math.random() - 0.5) * 120,
+        vx: (Math.random() - 0.5) * 9,
+        vy: -Math.random() * 10 - 3,
+        size: Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 95
+      }));
+
+      function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        particles.forEach(p => {
+          if (p.life <= 0) return;
+          alive = true;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35;
+          p.life--;
+          ctx.fillStyle = p.color;
+          ctx.fillRect(p.x, p.y, p.size, p.size * 0.65);
+        });
+        if (alive) requestAnimationFrame(frame);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
