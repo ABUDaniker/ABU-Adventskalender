@@ -16,11 +16,13 @@
       --swiss-red-soft: #fef2f2;
       --alpine-blue: #0284c7;
       --alpine-blue-soft: #f0f9ff;
-      --steel: #334155;
       --amber: #d97706;
       --amber-soft: #fffbeb;
       --emerald: #059669;
       --emerald-soft: #ecfdf5;
+      --xmas-red: #b91c1c;
+      --xmas-soft: #fff5f5;
+      --xmas-gold: #d97706;
       --shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
       --radius: 14px;
     }
@@ -121,7 +123,7 @@
       font-size: 0.875rem;
       font-weight: 600;
       color: var(--text);
-      width: 145px;
+      width: 135px;
     }
 
     .stat-pill {
@@ -142,13 +144,45 @@
       color: #92400e;
     }
 
+    .btn-christmas {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #fca5a5;
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.22);
+      transition: all 0.16s ease;
+    }
+
+    .btn-christmas:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+
+    .btn-christmas.active {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      border-color: #7dd3fc;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.24);
+    }
+
     /* Mountain Map Card */
-    .map-card {
+    .map-card, .christmas-hero-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 16px 20px;
+    }
+
+    .christmas-hero-card {
+      background: linear-gradient(135deg, #fff5f5 0%, #fffbeb 100%);
+      border: 1.5px solid #fca5a5;
     }
 
     .map-header {
@@ -259,8 +293,8 @@
     }
 
     .vault-digit {
-      width: 34px;
-      height: 38px;
+      width: 32px;
+      height: 36px;
       border-radius: 8px;
       border: 1.5px solid var(--border);
       background: var(--surface-alt);
@@ -268,7 +302,7 @@
       align-items: center;
       justify-content: center;
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--text-muted);
     }
@@ -278,24 +312,35 @@
       background: var(--amber-soft);
     }
 
+    .vault-digit.christmas {
+      border-color: #f87171;
+      background: var(--xmas-soft);
+    }
+
     .vault-digit.unlocked {
       border-color: var(--emerald);
       background: var(--emerald-soft);
       color: #065f46;
     }
 
-    /* 5 Tiles Grid */
+    /* 6 Tiles Grid (3x2) */
     .tiles-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    @media (max-width: 860px) {
+    .christmas-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 820px) {
       .tiles-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 500px) {
-      .tiles-grid { grid-template-columns: 1fr; }
+    @media (max-width: 560px) {
+      .tiles-grid, .christmas-grid { grid-template-columns: 1fr; }
     }
 
     .tile-card {
@@ -334,8 +379,23 @@
       box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
     }
 
+    .tile-card.christmas {
+      border-color: #fca5a5;
+      background: linear-gradient(180deg, #fff5f5 0%, #ffffff 55%);
+    }
+
+    .tile-card.christmas.active {
+      border-color: var(--xmas-red);
+      box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.18);
+    }
+
     .tile-card.solved {
       border-color: #34d399;
+    }
+
+    .tile-card.locked-xmas {
+      opacity: 0.7;
+      cursor: not-allowed;
     }
 
     .tile-top {
@@ -358,6 +418,12 @@
       background: #fef3c7;
       border-color: #fcd34d;
       color: #92400e;
+    }
+
+    .tile-card.christmas .cat-pill {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
     }
 
     .tile-status {
@@ -394,9 +460,8 @@
       overflow: hidden;
     }
 
-    .workspace-card.vocational {
-      border-color: var(--amber);
-    }
+    .workspace-card.vocational { border-color: var(--amber); }
+    .workspace-card.christmas { border-color: var(--xmas-red); }
 
     .ws-header {
       padding: 14px 20px;
@@ -441,6 +506,11 @@
     .workspace-card.vocational .step-tab.active {
       background: var(--amber);
       border-color: var(--amber);
+    }
+
+    .workspace-card.christmas .step-tab.active {
+      background: var(--xmas-red);
+      border-color: var(--xmas-red);
     }
 
     .ws-body {
@@ -494,40 +564,36 @@
       transition: all 0.14s ease;
     }
 
-    .btn-primary {
-      background: var(--alpine-blue);
-      color: #fff;
-    }
+    .btn-primary { background: var(--alpine-blue); color: #fff; }
     .btn-primary:hover { filter: brightness(0.94); }
-
-    .btn-success {
-      background: var(--emerald);
-      color: #fff;
-    }
+    .btn-success { background: var(--emerald); color: #fff; }
     .btn-success:hover { filter: brightness(0.94); }
-
-    .btn-outline {
-      background: var(--surface);
-      border-color: var(--border);
-      color: var(--text);
-    }
+    .btn-outline { background: var(--surface); border-color: var(--border); color: var(--text); }
     .btn-outline:hover { background: var(--surface-alt); }
+
+    .quiz-card-block {
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
 
     .quiz-options {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin: 12px 0;
+      margin: 10px 0 4px;
     }
 
     .quiz-opt {
       width: 100%;
       text-align: left;
-      padding: 11px 14px;
+      padding: 10px 13px;
       border-radius: 10px;
       border: 1.5px solid var(--border);
-      background: var(--surface-alt);
-      font-size: 0.95rem;
+      background: var(--surface);
+      font-size: 0.94rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.14s ease;
@@ -537,11 +603,11 @@
     .quiz-opt.wrong { border-color: var(--swiss-red); background: var(--swiss-red-soft); color: #991b1b; }
 
     .feedback-box {
-      padding: 11px 14px;
+      padding: 10px 13px;
       border-radius: 10px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      margin-top: 10px;
+      margin-top: 8px;
       border: 1px solid var(--border);
     }
     .feedback-box.ok { background: var(--emerald-soft); border-color: #6ee7b7; color: #065f46; }
@@ -592,7 +658,6 @@
       border-color: var(--alpine-blue);
     }
 
-    /* Locked Stage Card */
     .locked-card {
       background: var(--surface);
       border: 1px dashed #94a3b8;
@@ -602,7 +667,6 @@
       color: var(--text-muted);
     }
 
-    /* Completion Banner */
     .summit-card {
       background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 100%);
       border: 2px solid #34d399;
@@ -622,7 +686,7 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.22em;
       color: #065f46;
       margin: 10px 0;
     }
@@ -664,68 +728,102 @@
         </div>
       </div>
       <div class="hero-right">
+        <button class="btn-christmas" id="christmas-nav-btn" onclick="toggleChristmasView()">🎄 Weihnachtliches</button>
         <div class="name-input-wrap">
           <label for="student-name">Team / Name:</label>
           <input id="student-name" type="text" placeholder="z. B. Jan &amp; Noah" oninput="saveStudentName()" />
         </div>
         <div class="stat-pill" id="elevation-pill">⛰️ 1'000 m</div>
-        <div class="stat-pill points" id="points-pill">🏆 0 / 500 Pkt</div>
+        <div class="stat-pill points" id="points-pill">🏆 0 / 600 Pkt</div>
       </div>
     </header>
 
-    <!-- Mountain Panorama Map -->
-    <section class="map-card">
-      <div class="map-header">
-        <h2>🇨🇭 Dein Aufstieg über 4 Advents-Etappen (Donnerstag / Freitag)</h2>
-        <span style="font-size: 0.82rem; color: var(--text-muted);" id="overall-progress-label">0 / 20 Kacheln gelöst</span>
-      </div>
+    <!-- VIEW 1: GIPFEL-TOUR -->
+    <div id="tour-view" style="display: flex; flex-direction: column; gap: 16px;">
+      <!-- Mountain Panorama Map -->
+      <section class="map-card">
+        <div class="map-header">
+          <h2>🇨🇭 Dein Aufstieg über 4 Advents-Etappen (Donnerstag / Freitag)</h2>
+          <span style="font-size: 0.82rem; color: var(--text-muted);" id="overall-progress-label">0 / 24 Kacheln gelöst</span>
+        </div>
 
-      <div class="map-svg-wrap">
-        <svg viewBox="0 0 800 170" style="width: 100%; height: auto; max-height: 165px; display: block;" id="mountain-svg">
-          <!-- Distant Alpine Peaks -->
-          <polygon points="0,165 110,60 230,165" fill="#cbd5e1" opacity="0.45" />
-          <polygon points="150,165 320,38 480,165" fill="#94a3b8" opacity="0.35" />
-          <polygon points="380,165 560,26 740,165" fill="#cbd5e1" opacity="0.5" />
-          <polygon points="560,165 700,12 800,165" fill="#94a3b8" opacity="0.4" />
-          <!-- Snow Caps -->
-          <polygon points="560,26 525,58 550,52 568,64 595,55" fill="#ffffff" />
-          <polygon points="700,12 666,52 690,46 708,58 732,48" fill="#ffffff" />
-          <polygon points="320,38 292,66 314,60 330,70 350,62" fill="#ffffff" />
-          <!-- Dashed Trail -->
-          <polyline points="95,134 290,104 495,68 700,30" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="7,6" />
-          <!-- Progress Trail -->
-          <polyline id="svg-progress-line" points="95,134" fill="none" stroke="#0284c7" stroke-width="4.5" stroke-linecap="round" />
-          <!-- Station Nodes rendered by JS -->
-          <g id="svg-nodes"></g>
-        </svg>
-      </div>
+        <div class="map-svg-wrap">
+          <svg viewBox="0 0 800 170" style="width: 100%; height: auto; max-height: 165px; display: block;" id="mountain-svg">
+            <polygon points="0,165 110,60 230,165" fill="#cbd5e1" opacity="0.45" />
+            <polygon points="150,165 320,38 480,165" fill="#94a3b8" opacity="0.35" />
+            <polygon points="380,165 560,26 740,165" fill="#cbd5e1" opacity="0.5" />
+            <polygon points="560,165 700,12 800,165" fill="#94a3b8" opacity="0.4" />
+            <polygon points="560,26 525,58 550,52 568,64 595,55" fill="#ffffff" />
+            <polygon points="700,12 666,52 690,46 708,58 732,48" fill="#ffffff" />
+            <polygon points="320,38 292,66 314,60 330,70 350,62" fill="#ffffff" />
+            <polyline points="95,134 290,104 495,68 700,30" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="7,6" />
+            <polyline id="svg-progress-line" points="95,134" fill="none" stroke="#0284c7" stroke-width="4.5" stroke-linecap="round" />
+            <g id="svg-nodes"></g>
+          </svg>
+        </div>
 
-      <div class="stage-tabs" id="stage-tabs"></div>
-    </section>
+        <div class="stage-tabs" id="stage-tabs"></div>
+      </section>
 
-    <!-- Active Stage Banner & OLAT Tresorcode -->
-    <section class="stage-banner" id="stage-banner">
-      <div>
-        <div style="font-size: 1.05rem; font-weight: 800;" id="stage-title">Station 1: Talstation (1'000 m)</div>
-        <div style="font-size: 0.84rem; color: var(--text-muted);" id="stage-meta">Do/Fr, 3./4. Dez. · 0 / 5 Kacheln gelöst</div>
-      </div>
-      <div class="vault-wrap" id="vault-wrap">
-        <span class="vault-label">🔐 OLAT Etappen-Code:</span>
-        <div class="vault-digits" id="vault-digits"></div>
-      </div>
-    </section>
+      <!-- Active Stage Banner & OLAT Tresorcode -->
+      <section class="stage-banner" id="stage-banner">
+        <div>
+          <div style="font-size: 1.05rem; font-weight: 800;" id="stage-title">Station 1: Talstation (1'000 m)</div>
+          <div style="font-size: 0.84rem; color: var(--text-muted);" id="stage-meta">Do/Fr, 3./4. Dez. · 0 / 6 Kacheln gelöst</div>
+        </div>
+        <div class="vault-wrap" id="vault-wrap">
+          <span class="vault-label">🔐 OLAT Etappen-Code:</span>
+          <div class="vault-digits" id="vault-digits"></div>
+        </div>
+      </section>
 
-    <!-- Locked Stage Notice -->
-    <section class="locked-card hidden" id="locked-notice">
-      <div style="font-size: 2.2rem; margin-bottom: 8px;">🚡🔒</div>
-      <h3 style="font-size: 1.1rem; color: var(--text); margin-bottom: 6px;" id="locked-title">Station noch geschlossen</h3>
-      <p id="locked-msg" style="font-size: 0.92rem;">Diese Etappe wird am entsprechenden Schul-Donnerstag/Freitag freigeschaltet.</p>
-    </section>
+      <!-- Locked Stage Notice -->
+      <section class="locked-card hidden" id="locked-notice">
+        <div style="font-size: 2.2rem; margin-bottom: 8px;">🚡🔒</div>
+        <h3 style="font-size: 1.1rem; color: var(--text); margin-bottom: 6px;" id="locked-title">Station noch geschlossen</h3>
+        <p id="locked-msg" style="font-size: 0.92rem;">Diese Etappe wird am entsprechenden Schul-Donnerstag/Freitag freigeschaltet.</p>
+      </section>
 
-    <!-- 5 Tiles Grid -->
-    <section class="tiles-grid" id="tiles-grid"></section>
+      <!-- 6 Tiles Grid -->
+      <section class="tiles-grid" id="tiles-grid"></section>
 
-    <!-- Inline Task Workspace -->
+      <!-- Stage Completion Card -->
+      <section class="summit-card hidden" id="summit-card">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.2rem; font-weight: 800; color: #065f46;">🎉 Etappe geschafft! Gipfel-Etappen-Code freigeschaltet</h3>
+            <p style="font-size: 0.92rem; color: #047857; margin-top: 4px;">Trage diesen 6-stelligen Code in OpenOLAT ein oder zeige ihn deiner Lehrperson.</p>
+            <div class="code-hero" id="summit-code">749254</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn btn-success" onclick="copyStageCode()">📋 Code für OLAT kopieren</button>
+            <button class="btn btn-outline" onclick="copyReflections()">📝 Alle 6 Notizen kopieren</button>
+            <button class="btn btn-primary hidden" id="ntfy-send-btn" onclick="sendNtfyReport()">📲 Erfolg an Lehrperson melden</button>
+          </div>
+        </div>
+        <div id="summit-status-msg" style="font-size: 0.85rem; font-weight: 600; color: #065f46; margin-top: 8px;"></div>
+      </section>
+    </div>
+
+    <!-- VIEW 2: WEIHNACHTLICHES SPEZIAL-DASHBOARD -->
+    <div id="christmas-view" class="hidden" style="display: flex; flex-direction: column; gap: 16px;">
+      <section class="christmas-hero-card">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+          <div>
+            <h2 style="font-size: 1.2rem; font-weight: 800; color: #991b1b;">🎄 Weihnachtliches · Advent entdecken &amp; verstehen</h2>
+            <p style="font-size: 0.9rem; color: #7f1d1d; margin-top: 2px;">Ursprung der Adventszeit, Sitten &amp; Bräuche, Sinn der Adventszeit sowie Geschichten &amp; Legenden – jeweils mit Info, 3 Quizfragen, Schätzfrage &amp; Auftrag.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="stat-pill" id="christmas-progress-pill" style="background: #fff; border-color: #fca5a5; color: #991b1b;">🎄 0 / 4 Themen gelöst</span>
+            <button class="btn btn-outline" onclick="toggleChristmasView()">← Zur Gipfel-Tour</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="christmas-grid" id="christmas-grid"></section>
+    </div>
+
+    <!-- SHARED INLINE TASK WORKSPACE -->
     <section class="workspace-card hidden" id="workspace-card">
       <div class="ws-header">
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
@@ -754,12 +852,11 @@
           </div>
         </div>
 
-        <!-- Step 2: Quiz -->
+        <!-- Step 2: Quiz (1 oder 3 Fragen) -->
         <div id="panel-quiz" class="hidden">
-          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;" id="ws-q-text"></h4>
-          <div class="quiz-options" id="ws-q-opts"></div>
-          <div id="ws-q-fb" class="feedback-box hidden"></div>
-          <div style="margin-top: 14px;">
+          <div id="ws-quiz-summary" style="font-size: 0.86rem; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;"></div>
+          <div id="ws-quiz-list"></div>
+          <div style="margin-top: 10px;">
             <button class="btn btn-primary" onclick="setStep('estimate')">Weiter zur Schätzfrage →</button>
           </div>
         </div>
@@ -800,23 +897,6 @@
       </div>
     </section>
 
-    <!-- Stage Completion Card -->
-    <section class="summit-card hidden" id="summit-card">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px;">
-        <div>
-          <h3 style="font-size: 1.2rem; font-weight: 800; color: #065f46;">🎉 Etappe geschafft! Gipfel-Etappen-Code freigeschaltet</h3>
-          <p style="font-size: 0.92rem; color: #047857; margin-top: 4px;">Trage diesen 5-stelligen Code in OpenOLAT ein oder zeige ihn deiner Lehrperson.</p>
-          <div class="code-hero" id="summit-code">74925</div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button class="btn btn-success" onclick="copyStageCode()">📋 Code für OLAT kopieren</button>
-          <button class="btn btn-outline" onclick="copyReflections()">📝 Alle 5 Notizen kopieren</button>
-          <button class="btn btn-primary hidden" id="ntfy-send-btn" onclick="sendNtfyReport()">📲 Erfolg an Lehrperson melden</button>
-        </div>
-      </div>
-      <div id="summit-status-msg" style="font-size: 0.85rem; font-weight: 600; color: #065f46; margin-top: 8px;"></div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer-bar">
       <span id="data-source-badge">⚪ Eingebaute Daten</span>
@@ -836,7 +916,8 @@
     "ntfyTopic": "",
     "showVaultCode": true,
     "pointsPerTile": 25,
-    "elevationPerTile": 200
+    "elevationPerTile": 200,
+    "christmasAlwaysOpen": true
   },
   "stages": [
     {
@@ -854,12 +935,21 @@
           "isVocational": false,
           "title": "Wintersession im Bundeshaus",
           "infoText": "In der ersten Dezemberwoche treffen sich National- und Ständerat in Bern zur Wintersession. Drei Wochen lang beraten die Politikerinnen und Politiker das Geld-Budget der Schweiz für das nächste Jahr und diskutieren wichtige neue Gesetze.",
-          "facts": ["📍 Bern (Bundeshaus)", "⏱️ 3 Wochen Dauer", "🇨🇭 Budget & Gesetze"],
+          "facts": [
+            "📍 Bern (Bundeshaus)",
+            "⏱️ 3 Wochen Dauer",
+            "🇨🇭 Budget & Gesetze"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/news/schweiz",
           "quiz": {
             "question": "Wie viele Mitglieder hat der Schweizer Bundesrat insgesamt?",
-            "options": ["5 Mitglieder", "7 Mitglieder", "9 Mitglieder", "11 Mitglieder"],
+            "options": [
+              "5 Mitglieder",
+              "7 Mitglieder",
+              "9 Mitglieder",
+              "11 Mitglieder"
+            ],
             "correct": 1,
             "praise": "Volltreffer! Genau 7 Bundesrätinnen und Bundesräte bilden die Schweizer Landesregierung.",
             "correction": "Nicht ganz: Der Schweizer Bundesrat besteht seit 1848 aus genau 7 Mitgliedern."
@@ -886,12 +976,21 @@
           "isVocational": false,
           "title": "Schweizer Ski-Stars im Speed-Fieber",
           "infoText": "Im Dezember startet der Ski-Weltcup richtig durch. Schweizer Athletinnen und Athleten wie Marco Odermatt oder Lara Gut-Behrami rasen mit über 130 km/h die eisigen Pisten hinunter. Dabei entscheiden Hundertstelsekunden und perfekte Material-Abstimmung.",
-          "facts": ["⛷️ Ski Alpin Weltcup", "🇨🇭 Top-Skination", "⏱️ Hundertstel entscheiden"],
+          "facts": [
+            "⛷️ Ski Alpin Weltcup",
+            "🇨🇭 Top-Skination",
+            "⏱️ Hundertstel entscheiden"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "Welcher berühmte Berner Skiklassiker findet jeweils Mitte Januar in Wengen statt?",
-            "options": ["Lauberhorn-Rennen", "Spengler Cup", "Tour de Suisse", "Engadin Skimarathon"],
+            "options": [
+              "Lauberhorn-Rennen",
+              "Spengler Cup",
+              "Tour de Suisse",
+              "Engadin Skimarathon"
+            ],
             "correct": 0,
             "praise": "Richtig! Die Lauberhorn-Abfahrt in Wengen ist die längste Abfahrt im Weltcup.",
             "correction": "Knapp daneben: In Wengen findet jedes Jahr das berühmte Lauberhorn-Rennen statt."
@@ -918,12 +1017,21 @@
           "isVocational": false,
           "title": "Swiss Design – Mechanik trifft Alltag",
           "infoText": "Die Schweiz ist weltweit bekannt für schlichtes und langlebiges Design: Vom roten Taschenmesser über den Sparschäler «Rex» bis zur SBB-Bahnhofsuhr. Gute Gestaltung bedeutet hier, dass ein Werkzeug oder Gerät Jahrzehnte zuverlässig funktioniert.",
-          "facts": ["🇨🇭 Schweizer Design", "⚙️ Langlebige Technik", "🕰️ SBB-Uhr seit 1944"],
+          "facts": [
+            "🇨🇭 Schweizer Design",
+            "⚙️ Langlebige Technik",
+            "🕰️ SBB-Uhr seit 1944"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/kultur",
           "quiz": {
             "question": "In welchem Jahr entwarf Hans Hilfiker die berühmte Schweizer Bahnhofsuhr (SBB)?",
-            "options": ["1912", "1944", "1978", "1995"],
+            "options": [
+              "1912",
+              "1944",
+              "1978",
+              "1995"
+            ],
             "correct": 1,
             "praise": "Genau! Die SBB-Bahnhofsuhr mit der roten Sekunden-Kelle stammt aus dem Jahr 1944.",
             "correction": "Nicht ganz: Hans Hilfiker entwickelte die SBB-Bahnhofsuhr im Jahr 1944."
@@ -950,12 +1058,21 @@
           "isVocational": false,
           "title": "SRF Jahresrückblick & Mundart-Hits",
           "infoText": "Im Dezember blicken Radio und Fernsehen (SRF) auf die wichtigsten Momente des Jahres zurück. Bei den Sports Awards oder in Musik-Charts stehen Schweizer Künstlerinnen, Sportler und Alltagshelden im Rampenlicht.",
-          "facts": ["📺 TV-Rückblicke im Dez.", "🎵 Schweizer Mundart", "🏅 Sports Awards"],
+          "facts": [
+            "📺 TV-Rückblicke im Dez.",
+            "🎵 Schweizer Mundart",
+            "🏅 Sports Awards"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/unterhaltung",
           "quiz": {
             "question": "Wofür steht die Abkürzung «SRF» in der Schweiz?",
-            "options": ["Schweizer Radio und Fernsehen", "Sport-Ring Föderation", "Swiss Rail Foundation", "Sendestelle Region Freiburg"],
+            "options": [
+              "Schweizer Radio und Fernsehen",
+              "Sport-Ring Föderation",
+              "Swiss Rail Foundation",
+              "Sendestelle Region Freiburg"
+            ],
             "correct": 0,
             "praise": "Richtig! SRF bedeutet Schweizer Radio und Fernsehen.",
             "correction": "Fast: SRF ist die Abkürzung für Schweizer Radio und Fernsehen."
@@ -982,12 +1099,21 @@
           "isVocational": true,
           "title": "Messmittel: Der Messschieber & Nonius",
           "infoText": "Der Messschieber ist das wichtigste Handmessmittel für Mechanikpraktiker/innen. Mit ihm kannst du Aussenmasse, Innenmasse, Tiefen und Absätze schnell und genau prüfen. Vor dem Messen immer die Messflächen sauber wischen und auf Null-Stellung achten!",
-          "facts": ["📏 Aussen-, Innen-, Tiefenmass", "🔍 Nonius 1/20 = 0.05 mm", "🧼 Vorher sauber wischen"],
+          "facts": [
+            "📏 Aussen-, Innen-, Tiefenmass",
+            "🔍 Nonius 1/20 = 0.05 mm",
+            "🧼 Vorher sauber wischen"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welche Messgenauigkeit (Ablesewert) hat ein normaler Werkstatt-Messschieber mit 1/20-Nonius?",
-            "options": ["0.5 mm", "0.05 mm", "0.005 mm", "1.0 mm"],
+            "options": [
+              "0.5 mm",
+              "0.05 mm",
+              "0.005 mm",
+              "1.0 mm"
+            ],
             "correct": 1,
             "praise": "Top! Ein 1/20-Nonius teilt 1 Millimeter in 20 Teile: 1 / 20 = 0.05 mm.",
             "correction": "Merke dir: 1 geteilt durch 20 ergibt 0.05 mm (fünf Hundertstelmillimeter)."
@@ -1006,6 +1132,87 @@
             "placeholder": "Gegenstand + gemessenes Mass in mm..."
           },
           "codeDigit": "5"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Ursprung der Adventszeit",
+          "title": "🕯️ Ursprung der Adventszeit: Kranz & Kalender",
+          "infoText": "«Advent» kommt vom lateinischen Wort «adventus» und bedeutet «Ankunft». Schon seit dem 4. Jahrhundert bereiten sich Menschen vier Wochen lang auf Weihnachten vor. Den ersten Adventskranz baute 1839 der Pfarrer Johann Hinrich Wichern aus einem alten Wagenrad, damit Heimkinder die Tage bis Heiligabend zählen konnten.",
+          "facts": [
+            "🕯️ Advent = Ankunft",
+            "🛞 Erstes Rad 1839",
+            "📅 4 Adventssonntage"
+          ],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch",
+          "quiz": {
+            "question": "Was bedeutet das lateinische Wort «adventus» auf Deutsch?",
+            "options": [
+              "Geschenk",
+              "Ankunft",
+              "Schneefall",
+              "Winterende"
+            ],
+            "correct": 1,
+            "praise": "Richtig! «Adventus» bedeutet Ankunft.",
+            "correction": "Adventus kommt aus dem Lateinischen und bedeutet «Ankunft»."
+          },
+          "quizQuestions": [
+            {
+              "question": "Was bedeutet das lateinische Wort «adventus» auf Deutsch?",
+              "options": [
+                "Geschenk",
+                "Ankunft",
+                "Schneefall",
+                "Winterende"
+              ],
+              "correct": 1,
+              "praise": "Richtig! «Adventus» bedeutet Ankunft.",
+              "correction": "Adventus kommt aus dem Lateinischen und bedeutet «Ankunft»."
+            },
+            {
+              "question": "Worauf befestigte Johann Hinrich Wichern 1839 in Hamburg die ersten Adventskerzen?",
+              "options": [
+                "Auf einem alten Wagenrad",
+                "Auf einem Metallamboss",
+                "Auf einem Schlitten",
+                "Auf einem Kirchturm"
+              ],
+              "correct": 0,
+              "praise": "Genau! Aus einem alten Holz-Wagenrad entstand der erste Adventskranz (damals mit 24 Kerzen).",
+              "correction": "Wichern nahm ein altes Wagenrad, damit die Kinder jeden Tag eine Kerze anzünden konnten."
+            },
+            {
+              "question": "Wie viele Sonntage gehören heute klassisch zur Adventszeit?",
+              "options": [
+                "2 Sonntage",
+                "3 Sonntage",
+                "4 Sonntage",
+                "6 Sonntage"
+              ],
+              "correct": 2,
+              "praise": "Stimmt! Es sind genau 4 Adventssonntage vor Weihnachten.",
+              "correction": "Heute feiern wir 4 Adventssonntage (1. bis 4. Advent)."
+            }
+          ],
+          "estimate": {
+            "question": "In welchem Jahr baute Johann Hinrich Wichern den allerersten Adventskranz?",
+            "min": 1750,
+            "max": 1950,
+            "step": 1,
+            "target": 1839,
+            "unit": "",
+            "tolerance": 15
+          },
+          "action": {
+            "prompt": "Werkstatt-Idee (5 Min): Stell dir vor, ihr baut im Team aus Metallresten einen kleinen «Werkstatt-Adventskranz». Aus welchem Material und mit welcher Verbindungstechnik (Schweissen, Schrauben, Biegen) würdet ihr ihn bauen?",
+            "placeholder": "Material + Verbindungstechnik für euren Werkstatt-Kranz..."
+          },
+          "codeDigit": "4"
         }
       ]
     },
@@ -1024,12 +1231,19 @@
           "isVocational": false,
           "title": "Abstimmungen & Demokratie (Woche 2)",
           "infoText": "In der Schweiz dürfen Stimmbürgerinnen und Stimmbürger viermal im Jahr über wichtige Vorlagen abstimmen. Auch Initiativen und Referenden sind Teil der direkten Demokratie. Im Unterricht schauen wir, was diese Woche aktuell diskutiert wird.",
-          "facts": ["🗳️ Direkte Demokratie", "📜 Initiative & Referendum"],
+          "facts": [
+            "🗳️ Direkte Demokratie",
+            "📜 Initiative & Referendum"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/news/schweiz",
           "quiz": {
             "question": "Wie viele Unterschriften braucht es in der Schweiz für eine Volksinitiative (Verfassungsänderung)?",
-            "options": ["50'000 Unterschriften", "100'000 Unterschriften", "250'000 Unterschriften"],
+            "options": [
+              "50'000 Unterschriften",
+              "100'000 Unterschriften",
+              "250'000 Unterschriften"
+            ],
             "correct": 1,
             "praise": "Richtig! Für eine Volksinitiative braucht es 100'000 gültige Unterschriften in 18 Monaten.",
             "correction": "Für ein Referendum reichen 50'000 – für eine Volksinitiative braucht es 100'000 Unterschriften."
@@ -1056,12 +1270,20 @@
           "isVocational": false,
           "title": "Eishockey & Wintersport aktuell (Woche 2)",
           "infoText": "In der National League kämpfen 14 Schweizer Eishockey-Clubs um Punkte für die Playoffs. Gleichzeitig trainieren viele Teams für den traditionellen Spengler Cup Ende Dezember in Davos.",
-          "facts": ["🏒 National League", "❄️ Spengler Cup Davos"],
+          "facts": [
+            "🏒 National League",
+            "❄️ Spengler Cup Davos"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "In welchem Bündner Ort findet jedes Jahr zwischen Weihnachten und Neujahr der Spengler Cup statt?",
-            "options": ["Chur", "Davos", "St. Moritz", "Arosa"],
+            "options": [
+              "Chur",
+              "Davos",
+              "St. Moritz",
+              "Arosa"
+            ],
             "correct": 1,
             "praise": "Genau! Der Spengler Cup wird jedes Jahr im Eisstadion von Davos gespielt.",
             "correction": "Der Spengler Cup ist das Traditionsturnier des HC Davos in Davos."
@@ -1088,12 +1310,19 @@
           "isVocational": false,
           "title": "Schweizer Bahn- und Tunnelbau (Woche 2)",
           "infoText": "Brücken, Bahnhöfe und lange Alpentunnels prägen die Kultur und Technik der Schweiz. Ohne präzise Vermessung und Stahl- und Maschinenbau würden die Züge heute nicht pünktlich durch die Alpen rollen.",
-          "facts": ["🚆 Gotthard-Basistunnel", "🏗️ Ingenieurskunst CH"],
+          "facts": [
+            "🚆 Gotthard-Basistunnel",
+            "🏗️ Ingenieurskunst CH"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/kultur",
           "quiz": {
             "question": "Wie heisst der längste Eisenbahntunnel der Welt in der Schweiz?",
-            "options": ["Lötschberg-Basistunnel", "Gotthard-Basistunnel", "Vereina-Tunnel"],
+            "options": [
+              "Lötschberg-Basistunnel",
+              "Gotthard-Basistunnel",
+              "Vereina-Tunnel"
+            ],
             "correct": 1,
             "praise": "Richtig! Der Gotthard-Basistunnel ist mit 57 km der längste Eisenbahntunnel der Welt.",
             "correction": "Gemeint ist der 57 km lange Gotthard-Basistunnel."
@@ -1120,12 +1349,19 @@
           "isVocational": false,
           "title": "Adventsbräuche & Streaming-Trends (Woche 2)",
           "infoText": "Im Dezember gibt es in der Schweiz viele Traditionen: Samichlaus-Umzüge, Weihnachtsmärkte und beliebte Spendenaktionen wie «Jeder Rappen zählt» bzw. Winter-Specials in Musik und Podcasts.",
-          "facts": ["🎅 Dezember-Bräuche", "🎧 Podcasts & Serien"],
+          "facts": [
+            "🎅 Dezember-Bräuche",
+            "🎧 Podcasts & Serien"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch",
           "quiz": {
             "question": "Wann wird in vielen Schweizer Gemeinden traditionell der Samichlaus gefeiert?",
-            "options": ["1. Dezember", "6. Dezember", "18. Dezember"],
+            "options": [
+              "1. Dezember",
+              "6. Dezember",
+              "18. Dezember"
+            ],
             "correct": 1,
             "praise": "Richtig! Am 6. Dezember ist Nikolaustag (Samichlaus).",
             "correction": "Traditionell kommt der Samichlaus am 6. Dezember."
@@ -1152,12 +1388,21 @@
           "isVocational": true,
           "title": "Bohren & Schnittgeschwindigkeit (vc)",
           "infoText": "Beim Bohren mit dem Spiralbohrer muss die Drehzahl zum Bohrerdurchmesser und zum Werkstoff passen. Kleine Bohrer drehen schnell, grosse Bohrer drehen langsam! Ein normaler HSS-Spiralbohrer für Stahl hat einen Spitzenwinkel von 118°.",
-          "facts": ["🔩 Spitzenwinkel HSS: 118°", "⚡ Klein = hohe Drehzahl", "💧 Kühlschmierstoff nutzen"],
+          "facts": [
+            "🔩 Spitzenwinkel HSS: 118°",
+            "⚡ Klein = hohe Drehzahl",
+            "💧 Kühlschmierstoff nutzen"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welchen Spitzenwinkel hat ein Standard-HSS-Spiralbohrer für Baustahl?",
-            "options": ["60°", "90°", "118°", "140°"],
+            "options": [
+              "60°",
+              "90°",
+              "118°",
+              "140°"
+            ],
             "correct": 2,
             "praise": "Perfekt! 118° ist der klassische Spitzenwinkel für Standard-HSS-Bohrer.",
             "correction": "Der Standard-Spitzenwinkel bei HSS-Spiralbohrern beträgt 118°."
@@ -1176,6 +1421,87 @@
             "placeholder": "Höher oder tiefer + kurze Begründung..."
           },
           "codeDigit": "2"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Sitten und Bräuche",
+          "title": "🎅 Sitten & Bräuche: Samichlaus bis Klausjagen",
+          "infoText": "Im Dezember pflegt die Schweiz viele lebendige Bräuche: Am 6. Dezember zieht der Samichlaus mit dem Schmutzli durch die Dörfer und bringt Nüsse, Mandarinli und Lebkuchen. In Küssnacht am Rigi ziehen beim berühmten «Klausjagen» über 200 leuchtende, papiergeschnitzte «Iffelen» mit lauten Trychlen durch die dunkle Nacht.",
+          "facts": [
+            "🎅 Samichlaus (6. Dez.)",
+            "✨ Iffelen in Küssnacht",
+            "🍪 Mailänderli & Brunsli"
+          ],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch",
+          "quiz": {
+            "question": "Wie heissen die hohen, leuchtenden Kopfbedeckungen beim «Klausjagen» in Küssnacht am Rigi?",
+            "options": [
+              "Iffelen",
+              "Chräbeli",
+              "Schellen",
+              "Laternenhüte"
+            ],
+            "correct": 0,
+            "praise": "Volltreffer! Die kunstvollen Leucht-Mitren heissen «Iffelen».",
+            "correction": "Beim Klausjagen tragen die Männer bis zu zwei Meter hohe, beleuchtete «Iffelen»."
+          },
+          "quizQuestions": [
+            {
+              "question": "Wie heissen die hohen, leuchtenden Kopfbedeckungen beim «Klausjagen» in Küssnacht am Rigi?",
+              "options": [
+                "Iffelen",
+                "Chräbeli",
+                "Schellen",
+                "Laternenhüte"
+              ],
+              "correct": 0,
+              "praise": "Volltreffer! Die kunstvollen Leucht-Mitren heissen «Iffelen».",
+              "correction": "Beim Klausjagen tragen die Männer bis zu zwei Meter hohe, beleuchtete «Iffelen»."
+            },
+            {
+              "question": "Wer begleitet den Schweizer Samichlaus traditionell auf seinem Weg durch die Häuser?",
+              "options": [
+                "Der Schmutzli",
+                "Der Senn",
+                "Der Nachtwächter",
+                "Der Postillon"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Der Schmutzli hilft beim Tragen des schweren Sacks.",
+              "correction": "In der Deutschschweiz ist meist der Schmutzli an der Seite des Samichlaus."
+            },
+            {
+              "question": "Welches dieser drei Gebäcke gehört zu den klassischen Schweizer Weihnachtsguetzli?",
+              "options": [
+                "Brunsli",
+                "Brezel",
+                "Berliner",
+                "Birnenweggen"
+              ],
+              "correct": 0,
+              "praise": "Genau! Basler Brunsli (mit Schokolade und Mandeln) sind echte Guetzli-Klassiker.",
+              "correction": "Brunsli, Mailänderli und Zimtsterne sind klassische Schweizer Weihnachtsguetzli."
+            }
+          ],
+          "estimate": {
+            "question": "Wie schwer kann eine grosse geschmiedete Kuh-Trychel beim Klausjagen oder Chlausumzug ungefähr sein?",
+            "min": 1,
+            "max": 15,
+            "step": 0.5,
+            "target": 6,
+            "unit": "kg",
+            "tolerance": 2
+          },
+          "action": {
+            "prompt": "Brauch-Check (5 Min): Welchen Dezember- oder Weihnachtsbrauch kennt ihr aus eurer Familie, eurem Dorf oder eurem Herkunftsland? Notiert 1–2 Sätze dazu.",
+            "placeholder": "Mein Lieblingsbrauch im Dezember..."
+          },
+          "codeDigit": "6"
         }
       ]
     },
@@ -1194,12 +1520,19 @@
           "isVocational": false,
           "title": "Energie & Strom im Winter (Woche 3)",
           "infoText": "Im Winter braucht die Schweiz viel Strom zum Heizen, Beleuchten und für Maschinen in Werkstätten. Stauseen in den Alpen speichern Wasser, damit auch an kalten Tagen genügend Elektrizität produziert werden kann.",
-          "facts": ["⚡ Wasserkraft in den Alpen", "❄️ Hoher Winterbedarf"],
+          "facts": [
+            "⚡ Wasserkraft in den Alpen",
+            "❄️ Hoher Winterbedarf"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/news/schweiz",
           "quiz": {
             "question": "Welche Energiequelle liefert in der Schweiz den grössten Teil des Stroms?",
-            "options": ["Kohlekraftwerke", "Wasserkraft", "Windräder"],
+            "options": [
+              "Kohlekraftwerke",
+              "Wasserkraft",
+              "Windräder"
+            ],
             "correct": 1,
             "praise": "Genau! Rund 55–60 % des Schweizer Stroms stammt aus Wasserkraft.",
             "correction": "In der Schweiz ist Wasserkraft die wichtigste Stromquelle."
@@ -1226,12 +1559,19 @@
           "isVocational": false,
           "title": "Jahres-Highlights Schweizer Sport (Woche 3)",
           "infoText": "Kurz vor Weihnachten werden oft die besten Sportlerinnen, Sportler und Teams der Schweiz ausgezeichnet. Neben Ski und Fussball glänzen auch Schwingen, Leichtathletik, Radsport und Unihockey.",
-          "facts": ["🏅 Schweizer Sportjahr", "🇨🇭 Breite Sportkultur"],
+          "facts": [
+            "🏅 Schweizer Sportjahr",
+            "🇨🇭 Breite Sportkultur"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "Wie heisst der traditionelle Schweizer Nationalsport im Sägemehlring?",
-            "options": ["Schwingen", "Hornussen", "Steinstossen"],
+            "options": [
+              "Schwingen",
+              "Hornussen",
+              "Steinstossen"
+            ],
             "correct": 0,
             "praise": "Richtig! Schwingen findet im Sägemehlring statt.",
             "correction": "Im Sägemehlring wird geschwungen (Schwingen)."
@@ -1258,12 +1598,19 @@
           "isVocational": false,
           "title": "Vier Sprachen in einem Land (Woche 3)",
           "infoText": "Die Schweiz verbindet vier Landessprachen: Deutsch, Französisch, Italienisch und Rätoromanisch. Auch auf Werkzeug-Anleitungen, Sicherheitszeichen und in nationalen News begegnen uns diese Sprachen täglich.",
-          "facts": ["🗣️ 4 Landessprachen", "🇨🇭 Mehrsprachige Schweiz"],
+          "facts": [
+            "🗣️ 4 Landessprachen",
+            "🇨🇭 Mehrsprachige Schweiz"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/kultur",
           "quiz": {
             "question": "Welche vier Sprachen sind die offiziellen Landessprachen der Schweiz?",
-            "options": ["Deutsch, Englisch, Französisch, Italienisch", "Deutsch, Französisch, Italienisch, Rätoromanisch", "Deutsch, Französisch, Spanisch, Romanisch"],
+            "options": [
+              "Deutsch, Englisch, Französisch, Italienisch",
+              "Deutsch, Französisch, Italienisch, Rätoromanisch",
+              "Deutsch, Französisch, Spanisch, Romanisch"
+            ],
             "correct": 1,
             "praise": "Stimmt genau! Deutsch, Französisch, Italienisch und Rätoromanisch.",
             "correction": "Englisch ist keine Landessprache – richtig sind Deutsch, Französisch, Italienisch und Rätoromanisch."
@@ -1290,12 +1637,19 @@
           "isVocational": false,
           "title": "Schweizer Erfindungen & Rekorde (Woche 3)",
           "infoText": "Wusstest du, dass der Reissverschluss (weiterentwickelt in der Schweiz), der Klettverschluss (Velcro) und der Aluminium-Sparschäler Schweizer Ideen sind? Oft entstand eine Erfindung aus genauer Beobachtung im Alltag.",
-          "facts": ["💡 Velcro (Klettverschluss)", "🇨🇭 Erfindergeist"],
+          "facts": [
+            "💡 Velcro (Klettverschluss)",
+            "🇨🇭 Erfindergeist"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch",
           "quiz": {
             "question": "Was inspirierte den Schweizer Ingenieur George de Mestral zur Erfindung des Klettverschlusses?",
-            "options": ["Kletten-Früchte im Fell seines Hundes", "Spinnweben im Wald", "Tannenzapfen im Schnee"],
+            "options": [
+              "Kletten-Früchte im Fell seines Hundes",
+              "Spinnweben im Wald",
+              "Tannenzapfen im Schnee"
+            ],
             "correct": 0,
             "praise": "Genau! Unter dem Mikroskop sah er die winzigen Häkchen der Kletten.",
             "correction": "Es waren Kletten-Früchte, die im Fell seines Hundes hängen blieben."
@@ -1322,12 +1676,21 @@
           "isVocational": true,
           "title": "Gewindeschneiden: Kernloch M8 & M10",
           "infoText": "Wenn du ein Innengewinde schneiden willst, musst du zuerst das richtige Kernloch vorbohren. Für metrische ISO-Regelgewinde gilt die praktische Faustformel: Kernloch-Durchmesser ≈ Aussendurchmesser minus Steigung (d - P).",
-          "facts": ["🔩 M10: Steigung 1.5 mm", "📐 Formel: d - P", "🛢️ Schneidöl verwenden"],
+          "facts": [
+            "🔩 M10: Steigung 1.5 mm",
+            "📐 Formel: d - P",
+            "🛢️ Schneidöl verwenden"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welchen Spiralbohrer brauchst du für das Kernloch eines M10-Gewindes (Steigung P = 1.5 mm)?",
-            "options": ["8.0 mm", "8.5 mm", "9.0 mm", "10.0 mm"],
+            "options": [
+              "8.0 mm",
+              "8.5 mm",
+              "9.0 mm",
+              "10.0 mm"
+            ],
             "correct": 1,
             "praise": "Exakt! 10.0 mm minus 1.5 mm ergibt 8.5 mm Kernlochbohrer.",
             "correction": "Mit der Faustformel d - P rechnest du 10 - 1.5 = 8.5 mm."
@@ -1346,6 +1709,85 @@
             "placeholder": "Kurze Erklärung zum Spanbrechen..."
           },
           "codeDigit": "4"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Sinn der Adventszeit",
+          "title": "⭐ Sinn der Adventszeit: Licht & Zusammenhalt",
+          "infoText": "Im Dezember sind die Tage kurz und oft grau. Der eigentliche Sinn der Adventszeit ist kein Einkaufsstress, sondern ein Gegenpol zur Hektik: Kerzenlicht anzünden, kurz durchatmen, an Menschen denken, denen es weniger gut geht, und im Betrieb oder in der Familie respektvoll zusammenhalten.",
+          "facts": [
+            "🕯️ Licht in dunkler Zeit",
+            "🤝 Zeit & Respekt",
+            "🎁 Helfen statt Hektik"
+          ],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Welches Symbol spielt in fast allen Winter- und Adventsbräuchen die wichtigste Rolle?",
+            "options": [
+              "Licht und Wärme",
+              "Schnelle Autos",
+              "Lautstärke",
+              "Kälte"
+            ],
+            "correct": 0,
+            "praise": "Richtig! Kerzen und Lichter stehen für Hoffnung und Wärme in den dunklen Wintertagen.",
+            "correction": "Licht und Wärme sind das zentrale Zeichen in der dunklen Jahreszeit."
+          },
+          "quizQuestions": [
+            {
+              "question": "Welches Symbol spielt in fast allen Winter- und Adventsbräuchen die wichtigste Rolle?",
+              "options": [
+                "Licht und Wärme",
+                "Schnelle Autos",
+                "Lautstärke",
+                "Kälte"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Kerzen und Lichter stehen für Hoffnung und Wärme in den dunklen Wintertagen.",
+              "correction": "Licht und Wärme sind das zentrale Zeichen in der dunklen Jahreszeit."
+            },
+            {
+              "question": "Welcher astronomische Tag mit den wenigsten Sonnenstunden fällt auf den 21. Dezember?",
+              "options": [
+                "Wintersonnenwende",
+                "Tagundnachtgleiche",
+                "Sommersonnenwende"
+              ],
+              "correct": 0,
+              "praise": "Genau! Ab der Wintersonnenwende werden die Tage wieder langsam länger.",
+              "correction": "Am 21. Dezember ist die Wintersonnenwende (kürzester Tag des Jahres)."
+            },
+            {
+              "question": "Was gehört am besten zum ursprünglichen Gedanken der Adventszeit?",
+              "options": [
+                "Innehalten, teilen und füreinander da sein",
+                "Möglichst viele Pakete bestellen",
+                "Jeden Tag Überstunden machen"
+              ],
+              "correct": 0,
+              "praise": "Stimmt! Zeit für andere und Zusammenhalt machen den Advent wertvoll.",
+              "correction": "Im Mittelpunkt stehen Ruhe, Gemeinschaft und Hilfsbereitschaft."
+            }
+          ],
+          "estimate": {
+            "question": "Ungefähr wie viele Stunden ist es am 21. Dezember in der Schweiz hell (Tageslänge)?",
+            "min": 4,
+            "max": 16,
+            "step": 0.5,
+            "target": 8.5,
+            "unit": "Std.",
+            "tolerance": 1
+          },
+          "action": {
+            "prompt": "Team-Auftrag (5 Min): Überlegt zu zweit: Mit welcher kleinen Geste könnt ihr diese Woche im Lehrbetrieb oder in der Klasse jemandem eine echte Freude machen?",
+            "placeholder": "Unsere konkrete Geste für diese Woche..."
+          },
+          "codeDigit": "8"
         }
       ]
     },
@@ -1364,12 +1806,19 @@
           "isVocational": false,
           "title": "Neues Jahr – Neue Gesetze in der Schweiz",
           "infoText": "Jedes Jahr am 1. Januar treten in der Schweiz neue Regeln in Kraft – zum Beispiel im Strassenverkehr, bei Abgaben oder in der Berufsbildung. Sich kurz zu informieren hilft, im Betrieb und Alltag up to date zu bleiben.",
-          "facts": ["📅 Start am 1. Januar", "⚖️ Regeln im Alltag"],
+          "facts": [
+            "📅 Start am 1. Januar",
+            "⚖️ Regeln im Alltag"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.admin.ch",
           "quiz": {
             "question": "Wer wählt in der Schweiz jedes Jahr die Bundespräsidentin oder den Bundespräsidenten?",
-            "options": ["Das Volk direkt", "Die Vereinigte Bundesversammlung", "Die Kantonsregierungen"],
+            "options": [
+              "Das Volk direkt",
+              "Die Vereinigte Bundesversammlung",
+              "Die Kantonsregierungen"
+            ],
             "correct": 1,
             "praise": "Richtig! Die Vereinigte Bundesversammlung wählt im Dezember für jeweils ein Jahr.",
             "correction": "Im Dezember wählt die Vereinigte Bundesversammlung jeweils eine Person aus dem Bundesrat für ein Jahr."
@@ -1396,12 +1845,19 @@
           "isVocational": false,
           "title": "Wintersport über die Festtage",
           "infoText": "Zwischen Weihnachten und Neujahr pausiert kaum ein Wintersport: Vierschanzentournee, Ski-Rennen in Bormio und Adelboden sowie Eishockey-Turniere begeistern Millionen Fans vor dem Fernseher und auf den Pisten.",
-          "facts": ["🎿 Festtags-Sport", "🏔️ Skispringen & Ski"],
+          "facts": [
+            "🎿 Festtags-Sport",
+            "🏔️ Skispringen & Ski"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "Wie heisst der berühmte Schweizer Skisprung-Olympiasieger aus dem Toggenburg?",
-            "options": ["Simon Ammann", "Didier Cuche", "Dario Cologna"],
+            "options": [
+              "Simon Ammann",
+              "Didier Cuche",
+              "Dario Cologna"
+            ],
             "correct": 0,
             "praise": "Volltreffer! Simon Ammann holte 4× Olympia-Gold im Skispringen.",
             "correction": "Simon Ammann ist der 4-fache Schweizer Skisprung-Olympiasieger."
@@ -1428,12 +1884,19 @@
           "isVocational": false,
           "title": "Feiertage & Zeit für Familie/Freunde",
           "infoText": "Weihnachten wird in der Schweiz ganz unterschiedlich gefeiert: mit Fondue Chinoise, Guetzli, einem Spaziergang im Schnee oder einfach mit ein paar ruhigen Tagen ohne Wecker. Nach einem intensiven Lehrjahr tut Erholung gut.",
-          "facts": ["🍪 Weihnachtsguetzli", "🕯️ Erholung nach der Arbeit"],
+          "facts": [
+            "🍪 Weihnachtsguetzli",
+            "🕯️ Erholung nach der Arbeit"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welches traditionelle Schweizer Weihnachtsgebäck wird mit Anis zubereitet und auf ein Model gedrückt?",
-            "options": ["Mailänderli", "Springerle / Chräbeli", "Brunsli"],
+            "options": [
+              "Mailänderli",
+              "Springerle / Chräbeli",
+              "Brunsli"
+            ],
             "correct": 1,
             "praise": "Stimmt! Anis-Chräbeli bzw. Springerle werden mit Anis gebacken.",
             "correction": "Anis steckt klassisch in Chräbeli und Springerle."
@@ -1460,12 +1923,19 @@
           "isVocational": false,
           "title": "Silvester & Neujahrs-Feuerwerk",
           "infoText": "Zum Jahreswechsel leuchtet in vielen Schweizer Städten am See ein grosses Feuerwerk – oder moderne Drohnen-Shows zeichnen bunte Bilder in den Nachthimmel. Gleichzeitig starten viele mit guten Vorsätzen ins neue Jahr.",
-          "facts": ["🎆 Silvester in der CH", "🛸 Drohnen-Shows"],
+          "facts": [
+            "🎆 Silvester in der CH",
+            "🛸 Drohnen-Shows"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "In welcher Schweizer Stadt findet traditionell das grösste See-Silvesterfeuerwerk statt?",
-            "options": ["Zürich", "Aarau", "Chur"],
+            "options": [
+              "Zürich",
+              "Aarau",
+              "Chur"
+            ],
             "correct": 0,
             "praise": "Richtig! Der «Silvesterzauber» am Zürcher Seebecken zieht jedes Jahr Zehntausende an.",
             "correction": "Der grosse «Silvesterzauber» steigt am Zürichsee in Zürich."
@@ -1492,12 +1962,20 @@
           "isVocational": true,
           "title": "Arbeitssicherheit & PSA in der Werkstatt",
           "infoText": "Deine Gesundheit ist wichtiger als jedes Werkstück! In der mechanischen Werkstatt gilt: Schutzbrille auf bei allen spanabhebenden Arbeiten, enganliegende Kleidung tragen und an rotierenden Maschinen (Bohrmaschine, Drehmaschine) NIEMALS Handschuhe tragen – Einzugsgefahr!",
-          "facts": ["🥽 Schutzbrille Pflicht", "🚫 Keine Handschuhe am Bohrer", "🧹 Späne mit Pinsel/Haken"],
+          "facts": [
+            "🥽 Schutzbrille Pflicht",
+            "🚫 Keine Handschuhe am Bohrer",
+            "🧹 Späne mit Pinsel/Haken"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Was ist an einer laufenden Ständerbohrmaschine streng verboten?",
-            "options": ["Schutzbrille tragen", "Arbeitshandschuhe tragen", "Werkstück im Maschinenschraubstock spannen"],
+            "options": [
+              "Schutzbrille tragen",
+              "Arbeitshandschuhe tragen",
+              "Werkstück im Maschinenschraubstock spannen"
+            ],
             "correct": 1,
             "praise": "Richtig! Handschuhe können vom rotierenden Bohrer erfasst werden (schwere Einzugsgefahr).",
             "correction": "Achtung: Arbeitshandschuhe dürfen an rotierenden Maschinen niemals getragen werden!"
@@ -1516,6 +1994,85 @@
             "placeholder": "3 Sicherheitschecks vor dem Bohren..."
           },
           "codeDigit": "8"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Geschichten und Legenden",
+          "title": "📖 Geschichten & Legenden: Nikolaus & Scrooge",
+          "infoText": "Rund um den Advent gibt es berühmte Geschichten: Bischof Nikolaus von Myra warf einer armen Familie heimlich Goldmünzen ins Fenster, damit niemand Not litt. Charles Dickens erzählte 1843 vom geizigen Ebenezer Scrooge, der durch drei Weihnachtsgeister lernte, grosszügig zu sein. Und 1914 legten Soldaten an Weihnachten sogar die Waffen nieder.",
+          "facts": [
+            "🪙 Nikolaus von Myra",
+            "👻 Ebenezer Scrooge",
+            "⚽ Weihnachtsfrieden 1914"
+          ],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Wie heisst der berühmte Geizhals aus Charles Dickens' Weihnachtsgeschichte?",
+            "options": [
+              "Ebenezer Scrooge",
+              "Sherlock Holmes",
+              "Robinson Crusoe",
+              "Oliver Twist"
+            ],
+            "correct": 0,
+            "praise": "Richtig! Ebenezer Scrooge verwandelt sich vom Geizhals zum hilfsbereiten Menschen.",
+            "correction": "Der geizige Geschäftsmann bei Charles Dickens heisst Ebenezer Scrooge."
+          },
+          "quizQuestions": [
+            {
+              "question": "Wie heisst der berühmte Geizhals aus Charles Dickens' Weihnachtsgeschichte?",
+              "options": [
+                "Ebenezer Scrooge",
+                "Sherlock Holmes",
+                "Robinson Crusoe",
+                "Oliver Twist"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Ebenezer Scrooge verwandelt sich vom Geizhals zum hilfsbereiten Menschen.",
+              "correction": "Der geizige Geschäftsmann bei Charles Dickens heisst Ebenezer Scrooge."
+            },
+            {
+              "question": "Wie half Bischof Nikolaus von Myra laut Legende einer völlig verarmten Familie?",
+              "options": [
+                "Er warf heimlich Goldmünzen durch das Fenster",
+                "Er baute ihnen ein Schloss",
+                "Er schickte ihnen Rentiere"
+              ],
+              "correct": 0,
+              "praise": "Genau! Daraus entstand auch der Brauch des heimlichen Schenkens.",
+              "correction": "Laut Überlieferung warf Nikolaus heimlich Goldsäckchen ins Haus."
+            },
+            {
+              "question": "Was geschah beim historischen «Weihnachtsfrieden» an Heiligabend 1914 im Schützengraben?",
+              "options": [
+                "Soldaten sangen Lieder, tauschten Zigaretten und spielten Fussball",
+                "Es fiel überhaupt kein Schnee",
+                "Der Krieg wurde für immer beendet"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Für kurze Zeit siegte die Menschlichkeit mitten im Ersten Weltkrieg.",
+              "correction": "An manchen Frontabschnitten kamen verfeindete Soldaten zusammen, sangen und spielten Fussball."
+            }
+          ],
+          "estimate": {
+            "question": "Um welches Jahr nach Christus lebte der historische Bischof Nikolaus von Myra (Todesjahr ca.)?",
+            "min": 100,
+            "max": 800,
+            "step": 10,
+            "target": 343,
+            "unit": "n. Chr.",
+            "tolerance": 50
+          },
+          "action": {
+            "prompt": "Mini-Legende (5 Min): Erfindet zu zweit in 2 Sätzen eine kurze «Werkstatt-Weihnachtsgeschichte»: Ein Teil klemmt, Stress ist gross – wie hilft Teamgeist am Ende weiter?",
+            "placeholder": "Unsere kurze Werkstatt-Geschichte..."
+          },
+          "codeDigit": "9"
         }
       ]
     }
@@ -1524,8 +2081,9 @@
 
     const STORAGE_KEY = 'eba_gipfeltour_progress_v1';
     let APP_DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+    let viewMode = 'tour'; // 'tour' or 'christmas'
     let activeStageIdx = 0;
-    let activeTileIdx = null;
+    let activeTileRef = null; // { stageIdx, tileIdx }
     let activeStep = 'info';
 
     let userProgress = loadProgress();
@@ -1539,9 +2097,7 @@
     }
 
     function saveProgress() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress));
-      } catch (e) {}
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress)); } catch (e) {}
     }
 
     function tileKey(stageId, cat) {
@@ -1551,9 +2107,22 @@
     function getTileState(stageId, cat) {
       const k = tileKey(stageId, cat);
       if (!userProgress.tiles[k]) {
-        userProgress.tiles[k] = { quizDone: false, quizPicked: null, estDone: false, estVal: null, actionNote: '', solved: false };
+        userProgress.tiles[k] = { quizDone: false, quizPicked: null, quizAnswers: {}, estDone: false, estVal: null, actionNote: '', solved: false };
+      }
+      if (!userProgress.tiles[k].quizAnswers) {
+        userProgress.tiles[k].quizAnswers = {};
+        if (userProgress.tiles[k].quizDone && userProgress.tiles[k].quizPicked !== null) {
+          userProgress.tiles[k].quizAnswers[0] = userProgress.tiles[k].quizPicked;
+        }
       }
       return userProgress.tiles[k];
+    }
+
+    function getTileQuizzes(tile) {
+      if (Array.isArray(tile.quizQuestions) && tile.quizQuestions.length > 0) {
+        return tile.quizQuestions;
+      }
+      return tile.quiz ? [tile.quiz] : [];
     }
 
     function saveStudentName() {
@@ -1573,48 +2142,54 @@
               document.getElementById('data-source-badge').textContent = '🟢 Live-Daten (etappen.json) aktiv';
             }
           }
-        } catch (err) {
-          console.log('Nutze eingebaute Standard-Daten:', err);
-        }
+        } catch (err) {}
       }
-      // Select latest unlocked stage automatically
       let latestUnlocked = 0;
       APP_DATA.stages.forEach((st, idx) => { if (st.unlocked) latestUnlocked = idx; });
       activeStageIdx = latestUnlocked;
       renderAll();
     }
 
+    function toggleChristmasView() {
+      viewMode = viewMode === 'tour' ? 'christmas' : 'tour';
+      activeTileRef = null;
+      renderAll();
+    }
+
     function renderAll() {
       document.getElementById('app-title').textContent = APP_DATA.config.title || 'Schweizer Gipfel-Tour 🎄';
       document.getElementById('app-subtitle').textContent = APP_DATA.config.subtitle || '';
+
+      const navBtn = document.getElementById('christmas-nav-btn');
+      navBtn.classList.toggle('active', viewMode === 'christmas');
+      navBtn.textContent = viewMode === 'christmas' ? '🏔️ Zur Gipfel-Tour' : '🎄 Weihnachtliches';
+
+      document.getElementById('tour-view').classList.toggle('hidden', viewMode !== 'tour');
+      document.getElementById('christmas-view').classList.toggle('hidden', viewMode !== 'christmas');
+
       renderStats();
-      renderMountainMap();
-      renderStageView();
+      if (viewMode === 'tour') {
+        renderMountainMap();
+        renderStageView();
+      } else {
+        renderChristmasView();
+      }
+      renderWorkspaceOrHide();
     }
 
     function renderStats() {
       let solvedCount = 0;
       let totalCount = 0;
-      let highestElev = APP_DATA.stages[0]?.elevation || 1000;
-
       APP_DATA.stages.forEach(st => {
-        let stageSolved = 0;
         st.tiles.forEach(t => {
           totalCount++;
-          if (getTileState(st.id, t.category).solved) {
-            solvedCount++;
-            stageSolved++;
-          }
+          if (getTileState(st.id, t.category).solved) solvedCount++;
         });
-        if (st.unlocked && stageSolved > 0 && st.elevation > highestElev) {
-          highestElev = st.elevation;
-        }
       });
-
-      const pts = solvedCount * (APP_DATA.config.pointsPerTile || 25);
-      const maxPts = totalCount * (APP_DATA.config.pointsPerTile || 25);
-      const elevBonus = solvedCount * 120;
-      const displayElev = Math.min(3400, 1000 + elevBonus);
+      const ptsPerTile = APP_DATA.config.pointsPerTile || 25;
+      const pts = solvedCount * ptsPerTile;
+      const maxPts = totalCount * ptsPerTile;
+      const displayElev = totalCount > 0 ? Math.min(3400, 1000 + Math.round((solvedCount / totalCount) * 2400)) : 1000;
 
       document.getElementById('elevation-pill').textContent = `⛰️ ${displayElev.toLocaleString('de-CH')} m ü. M.`;
       document.getElementById('points-pill').textContent = `🏆 ${pts} / ${maxPts} Pkt`;
@@ -1622,12 +2197,7 @@
     }
 
     function renderMountainMap() {
-      const coords = [
-        { x: 95, y: 134 },
-        { x: 290, y: 104 },
-        { x: 495, y: 68 },
-        { x: 700, y: 30 }
-      ];
+      const coords = [{ x: 95, y: 134 }, { x: 290, y: 104 }, { x: 495, y: 68 }, { x: 700, y: 30 }];
       const svgNodes = document.getElementById('svg-nodes');
       const tabsEl = document.getElementById('stage-tabs');
       let nodesHtml = '';
@@ -1665,17 +2235,17 @@
         `;
       });
 
-      const linePts = coords.slice(0, lastUnlockedCoordIdx + 1).map(c => `${c.x},${c.y}`).join(' ');
-      document.getElementById('svg-progress-line').setAttribute('points', linePts);
+      document.getElementById('svg-progress-line').setAttribute('points', coords.slice(0, lastUnlockedCoordIdx + 1).map(c => `${c.x},${c.y}`).join(' '));
       svgNodes.innerHTML = nodesHtml;
       tabsEl.innerHTML = tabsHtml;
     }
 
     function selectStage(idx) {
       activeStageIdx = idx;
-      activeTileIdx = null;
+      activeTileRef = null;
       renderMountainMap();
       renderStageView();
+      renderWorkspaceOrHide();
     }
 
     function renderStageView() {
@@ -1685,18 +2255,15 @@
       document.getElementById('stage-title').textContent = `Station ${stage.id}: ${stage.stationName} (${stage.elevation.toLocaleString('de-CH')} m)`;
       document.getElementById('stage-meta').textContent = `${stage.dateLabel} · ${solvedInStage} / ${stage.tiles.length} Kacheln gelöst`;
 
-      // Vault code
-      const vaultWrap = document.getElementById('vault-wrap');
-      vaultWrap.classList.toggle('hidden', APP_DATA.config.showVaultCode === false);
+      document.getElementById('vault-wrap').classList.toggle('hidden', APP_DATA.config.showVaultCode === false);
       document.getElementById('vault-digits').innerHTML = stage.tiles.map(t => {
         const st = getTileState(stage.id, t.category);
-        const cls = ['vault-digit', t.isVocational ? 'vocational' : '', st.solved ? 'unlocked' : ''].join(' ');
+        const cls = ['vault-digit', t.isVocational ? 'vocational' : '', t.isChristmas ? 'christmas' : '', st.solved ? 'unlocked' : ''].join(' ');
         return `<span class="${cls}" title="${escapeHtml(t.categoryLabel)}">${st.solved ? escapeHtml(t.codeDigit || '0') : '?'}</span>`;
       }).join('');
 
       const lockedEl = document.getElementById('locked-notice');
       const gridEl = document.getElementById('tiles-grid');
-      const wsEl = document.getElementById('workspace-card');
       const summitEl = document.getElementById('summit-card');
 
       if (!stage.unlocked) {
@@ -1704,7 +2271,6 @@
         document.getElementById('locked-title').textContent = `${stage.stationName} (${stage.dateLabel}) noch geschlossen`;
         document.getElementById('locked-msg').textContent = stage.hintLocked || 'Diese Etappe wird bald freigeschaltet.';
         gridEl.classList.add('hidden');
-        wsEl.classList.add('hidden');
         summitEl.classList.add('hidden');
         return;
       }
@@ -1714,14 +2280,18 @@
 
       gridEl.innerHTML = stage.tiles.map((t, idx) => {
         const st = getTileState(stage.id, t.category);
+        const isAct = activeTileRef && activeTileRef.stageIdx === activeStageIdx && activeTileRef.tileIdx === idx;
         const cls = [
           'tile-card',
           t.isVocational ? 'vocational' : '',
-          idx === activeTileIdx ? 'active' : '',
+          t.isChristmas ? 'christmas' : '',
+          isAct ? 'active' : '',
           st.solved ? 'solved' : ''
         ].join(' ');
+        const qCount = getTileQuizzes(t).length;
+        const subTag = t.isVocational ? 'Werkstatt & Praxis' : (t.isChristmas ? `${qCount} Quizfragen` : 'Aktuelles CH');
         return `
-          <button class="${cls}" onclick="openTile(${idx})">
+          <button class="${cls}" onclick="openTile(${activeStageIdx}, ${idx})">
             <div>
               <div class="tile-top">
                 <span class="cat-pill">${escapeHtml(t.icon)} ${escapeHtml(t.categoryLabel)}</span>
@@ -1730,54 +2300,101 @@
               <div class="tile-title" style="margin-top: 8px;">${escapeHtml(t.title)}</div>
             </div>
             <div class="tile-foot">
-              <span>${t.isVocational ? 'Werkstatt &amp; Praxis' : 'Aktuelles CH'}</span>
-              <span>${st.solved ? 'Code: ' + escapeHtml(t.codeDigit) : '+25 Pkt →'}</span>
+              <span>${subTag}</span>
+              <span>${st.solved ? 'Code: ' + escapeHtml(t.codeDigit) : '+' + (APP_DATA.config.pointsPerTile || 25) + ' Pkt →'}</span>
             </div>
           </button>
         `;
       }).join('');
 
-      if (activeTileIdx !== null) {
-        renderWorkspace();
-      } else {
-        wsEl.classList.add('hidden');
-      }
-
-      // Summit card
       if (solvedInStage === stage.tiles.length && stage.tiles.length > 0) {
         summitEl.classList.remove('hidden');
-        const fullCode = stage.tiles.map(t => t.codeDigit || '0').join('');
-        document.getElementById('summit-code').textContent = fullCode;
-        const ntfyBtn = document.getElementById('ntfy-send-btn');
-        ntfyBtn.classList.toggle('hidden', !APP_DATA.config.ntfyTopic);
+        document.getElementById('summit-code').textContent = stage.tiles.map(t => t.codeDigit || '0').join('');
+        document.getElementById('ntfy-send-btn').classList.toggle('hidden', !APP_DATA.config.ntfyTopic);
       } else {
         summitEl.classList.add('hidden');
       }
     }
 
-    function openTile(idx) {
-      activeTileIdx = idx;
+    function renderChristmasView() {
+      const alwaysOpen = APP_DATA.config.christmasAlwaysOpen !== false;
+      const items = [];
+      let solvedCount = 0;
+
+      APP_DATA.stages.forEach((st, sIdx) => {
+        const tIdx = st.tiles.findIndex(t => t.category === 'weihnachtliches' || t.isChristmas);
+        if (tIdx !== -1) {
+          const tile = st.tiles[tIdx];
+          const state = getTileState(st.id, tile.category);
+          if (state.solved) solvedCount++;
+          items.push({ st, sIdx, tIdx, tile, state, canOpen: alwaysOpen || st.unlocked });
+        }
+      });
+
+      document.getElementById('christmas-progress-pill').textContent = `🎄 ${solvedCount} / ${items.length} Themen gelöst`;
+
+      document.getElementById('christmas-grid').innerHTML = items.map(item => {
+        const isAct = activeTileRef && activeTileRef.stageIdx === item.sIdx && activeTileRef.tileIdx === item.tIdx;
+        const cls = [
+          'tile-card',
+          'christmas',
+          isAct ? 'active' : '',
+          item.state.solved ? 'solved' : '',
+          !item.canOpen ? 'locked-xmas' : ''
+        ].join(' ');
+        const qCount = getTileQuizzes(item.tile).length;
+        const badgeText = item.tile.themeTag || `Etappe ${item.st.id}`;
+        const onclickAttr = item.canOpen ? `onclick="openTile(${item.sIdx}, ${item.tIdx})"` : '';
+        return `
+          <button class="${cls}" ${onclickAttr}>
+            <div>
+              <div class="tile-top">
+                <span class="cat-pill">🎄 ${escapeHtml(badgeText)}</span>
+                <span class="tile-status ${item.state.solved ? 'done' : ''}">${item.state.solved ? '✓ Gelöst' : (item.canOpen ? 'Offen' : '🔒 ' + escapeHtml(item.st.dateLabel))}</span>
+              </div>
+              <div class="tile-title" style="margin-top: 8px;">${escapeHtml(item.tile.title)}</div>
+            </div>
+            <div class="tile-foot">
+              <span>${qCount} Quizfragen · Schätzfrage · Auftrag</span>
+              <span>${item.canOpen ? (item.state.solved ? 'Ansehen' : 'Öffnen →') : 'Gesperrt'}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function openTile(stageIdx, tileIdx) {
+      activeTileRef = { stageIdx, tileIdx };
       activeStep = 'info';
-      renderStageView();
-      const ws = document.getElementById('workspace-card');
-      ws.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (viewMode === 'tour') renderStageView();
+      else renderChristmasView();
+      renderWorkspaceOrHide();
+      document.getElementById('workspace-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function closeWorkspace() {
-      activeTileIdx = null;
-      renderStageView();
+      activeTileRef = null;
+      if (viewMode === 'tour') renderStageView();
+      else renderChristmasView();
+      renderWorkspaceOrHide();
     }
 
-    function renderWorkspace() {
-      const stage = APP_DATA.stages[activeStageIdx];
-      const tile = stage.tiles[activeTileIdx];
+    function renderWorkspaceOrHide() {
+      const ws = document.getElementById('workspace-card');
+      if (!activeTileRef) {
+        ws.classList.add('hidden');
+        return;
+      }
+
+      const stage = APP_DATA.stages[activeTileRef.stageIdx];
+      const tile = stage.tiles[activeTileRef.tileIdx];
       const st = getTileState(stage.id, tile.category);
 
-      const ws = document.getElementById('workspace-card');
-      ws.classList.remove('hidden');
-      ws.classList.toggle('vocational', !!tile.isVocational);
+      ws.classList.remove('hidden', 'vocational', 'christmas');
+      if (tile.isVocational) ws.classList.add('vocational');
+      if (tile.isChristmas) ws.classList.add('christmas');
 
-      document.getElementById('ws-cat-pill').textContent = `${tile.icon} ${tile.categoryLabel}`;
+      document.getElementById('ws-cat-pill').textContent = `${tile.icon} ${tile.themeTag ? tile.categoryLabel + ' · ' + tile.themeTag : tile.categoryLabel}`;
       document.getElementById('ws-title').textContent = tile.title;
 
       // Info
@@ -1798,26 +2415,48 @@
         linkEl.classList.add('hidden');
       }
 
-      // Quiz
-      document.getElementById('ws-q-text').textContent = tile.quiz.question;
-      document.getElementById('ws-q-opts').innerHTML = tile.quiz.options.map((opt, i) => {
-        let extra = '';
-        if (st.quizDone) {
-          if (i === tile.quiz.correct) extra = ' correct';
-          else if (i === st.quizPicked) extra = ' wrong';
+      // Multi-Quiz
+      const quizzes = getTileQuizzes(tile);
+      let correctTotal = 0;
+      let answeredTotal = 0;
+      quizzes.forEach((q, qIdx) => {
+        const picked = st.quizAnswers[qIdx];
+        if (picked !== undefined && picked !== null) {
+          answeredTotal++;
+          if (picked === q.correct) correctTotal++;
         }
-        return `<button class="quiz-opt${extra}" onclick="answerQuiz(${i})">${String.fromCharCode(65 + i)}) ${escapeHtml(opt)}</button>`;
-      }).join('');
+      });
 
-      const qfb = document.getElementById('ws-q-fb');
-      if (st.quizDone) {
-        qfb.classList.remove('hidden', 'ok', 'err');
-        const isOk = st.quizPicked === tile.quiz.correct;
-        qfb.classList.add(isOk ? 'ok' : 'err');
-        qfb.textContent = (isOk ? '✅ ' : '❌ ') + (isOk ? tile.quiz.praise : tile.quiz.correction);
-      } else {
-        qfb.classList.add('hidden');
-      }
+      document.getElementById('ws-quiz-summary').textContent = quizzes.length > 1
+        ? `Quiz-Runde (${quizzes.length} Fragen) · ${answeredTotal}/${quizzes.length} beantwortet (${correctTotal} richtig)`
+        : 'Kurz-Quiz zur Kontrolle';
+
+      document.getElementById('ws-quiz-list').innerHTML = quizzes.map((q, qIdx) => {
+        const picked = st.quizAnswers[qIdx];
+        const hasAns = picked !== undefined && picked !== null;
+        const isOk = hasAns && picked === q.correct;
+
+        const optsHtml = q.options.map((opt, oIdx) => {
+          let extra = '';
+          if (hasAns) {
+            if (oIdx === q.correct) extra = ' correct';
+            else if (oIdx === picked) extra = ' wrong';
+          }
+          return `<button class="quiz-opt${extra}" onclick="answerQuiz(${qIdx}, ${oIdx})">${String.fromCharCode(65 + oIdx)}) ${escapeHtml(opt)}</button>`;
+        }).join('');
+
+        const fbHtml = hasAns
+          ? `<div class="feedback-box ${isOk ? 'ok' : 'err'}">${isOk ? '✅ ' + escapeHtml(q.praise) : '❌ ' + escapeHtml(q.correction)}</div>`
+          : '';
+
+        return `
+          <div class="quiz-card-block">
+            <div style="font-size: 0.96rem; font-weight: 700; margin-bottom: 6px;">${quizzes.length > 1 ? `Frage ${qIdx + 1}/${quizzes.length}: ` : ''}${escapeHtml(q.question)}</div>
+            <div class="quiz-options">${optsHtml}</div>
+            ${fbHtml}
+          </div>
+        `;
+      }).join('');
 
       // Estimate
       const est = tile.estimate;
@@ -1845,6 +2484,7 @@
       ta.value = st.actionNote || '';
 
       document.getElementById('ws-solved-note').classList.toggle('hidden', !st.solved);
+      document.getElementById('ws-solved-note').textContent = `✅ Kachel gelöst (+${APP_DATA.config.pointsPerTile || 25} Pkt)`;
       document.getElementById('ws-complete-btn').textContent = st.solved
         ? `✓ Gelöst (Code-Ziffer: ${tile.codeDigit})`
         : 'Auftrag erledigt & Code-Ziffer freischalten 🔓';
@@ -1860,25 +2500,29 @@
       });
     }
 
-    function answerQuiz(idx) {
-      const stage = APP_DATA.stages[activeStageIdx];
-      const tile = stage.tiles[activeTileIdx];
+    function answerQuiz(qIdx, optIdx) {
+      const stage = APP_DATA.stages[activeTileRef.stageIdx];
+      const tile = stage.tiles[activeTileRef.tileIdx];
       const st = getTileState(stage.id, tile.category);
-      st.quizDone = true;
-      st.quizPicked = idx;
+      st.quizAnswers[qIdx] = optIdx;
+      if (qIdx === 0) {
+        st.quizDone = true;
+        st.quizPicked = optIdx;
+      }
       saveProgress();
-      renderWorkspace();
+      renderWorkspaceOrHide();
     }
 
     function updateEstimateDisplay() {
-      const tile = APP_DATA.stages[activeStageIdx].tiles[activeTileIdx];
+      if (!activeTileRef) return;
+      const tile = APP_DATA.stages[activeTileRef.stageIdx].tiles[activeTileRef.tileIdx];
       const val = document.getElementById('ws-est-slider').value;
       document.getElementById('ws-est-val').textContent = `${val}${tile.estimate.unit ? ' ' + tile.estimate.unit : ''}`;
     }
 
     function checkEstimate() {
-      const stage = APP_DATA.stages[activeStageIdx];
-      const tile = stage.tiles[activeTileIdx];
+      const stage = APP_DATA.stages[activeTileRef.stageIdx];
+      const tile = stage.tiles[activeTileRef.tileIdx];
       const st = getTileState(stage.id, tile.category);
       const val = Number(document.getElementById('ws-est-slider').value);
       st.estDone = true;
@@ -1900,16 +2544,16 @@
     }
 
     function saveActionNote() {
-      const stage = APP_DATA.stages[activeStageIdx];
-      const tile = stage.tiles[activeTileIdx];
+      const stage = APP_DATA.stages[activeTileRef.stageIdx];
+      const tile = stage.tiles[activeTileRef.tileIdx];
       const st = getTileState(stage.id, tile.category);
       st.actionNote = document.getElementById('ws-act-input').value;
       saveProgress();
     }
 
     function completeTile() {
-      const stage = APP_DATA.stages[activeStageIdx];
-      const tile = stage.tiles[activeTileIdx];
+      const stage = APP_DATA.stages[activeTileRef.stageIdx];
+      const tile = stage.tiles[activeTileRef.tileIdx];
       const st = getTileState(stage.id, tile.category);
       const wasSolved = st.solved;
       st.actionNote = document.getElementById('ws-act-input').value;
@@ -1917,14 +2561,17 @@
       saveProgress();
 
       renderStats();
-      renderMountainMap();
-      renderStageView();
+      if (viewMode === 'tour') {
+        renderMountainMap();
+        renderStageView();
+      } else {
+        renderChristmasView();
+      }
+      renderWorkspaceOrHide();
 
       const allDone = stage.tiles.every(t => getTileState(stage.id, t.category).solved);
-      if (!wasSolved) {
-        burstConfetti(allDone ? 90 : 35);
-      }
-      if (allDone) {
+      if (!wasSolved) burstConfetti(allDone ? 90 : 35);
+      if (viewMode === 'tour' && allDone) {
         document.getElementById('summit-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     }
@@ -1934,8 +2581,6 @@
       const code = stage.tiles.map(t => t.codeDigit || '0').join('');
       navigator.clipboard?.writeText(code).then(() => {
         document.getElementById('summit-status-msg').textContent = `✅ Code "${code}" in die Zwischenablage kopiert – jetzt in OLAT einfügen!`;
-      }).catch(() => {
-        document.getElementById('summit-status-msg').textContent = `Code: ${code}`;
       });
     }
 
@@ -1948,7 +2593,7 @@
         lines.push(`• ${t.categoryLabel}: ${st.actionNote ? st.actionNote.trim() : '(erledigt)'}`);
       });
       navigator.clipboard?.writeText(lines.join('\n')).then(() => {
-        document.getElementById('summit-status-msg').textContent = '✅ Alle 5 Notizen wurden kopiert!';
+        document.getElementById('summit-status-msg').textContent = `✅ Alle ${stage.tiles.length} Notizen wurden kopiert!`;
       });
     }
 
@@ -1972,11 +2617,7 @@
           tags: ['mountain', 'white_check_mark']
         })
       }).then(res => {
-        if (res.ok) {
-          msgEl.textContent = '✅ Erfolgsmeldung wurde an die Lehrperson gesendet!';
-        } else {
-          msgEl.textContent = '⚠️ Meldung konnte nicht gesendet werden – zeige einfach den Code in OLAT.';
-        }
+        msgEl.textContent = res.ok ? '✅ Erfolgsmeldung wurde an die Lehrperson gesendet!' : '⚠️ Bitte Code direkt in OLAT eintragen.';
       }).catch(() => {
         msgEl.textContent = '⚠️ Keine Verbindung zu ntfy.sh – trage den Code direkt in OLAT ein.';
       });
@@ -1987,7 +2628,7 @@
       localStorage.removeItem(STORAGE_KEY);
       userProgress = { name: '', tiles: {}, notifiedStages: {} };
       document.getElementById('student-name').value = '';
-      activeTileIdx = null;
+      activeTileRef = null;
       renderAll();
     }
 

@@ -6,7 +6,8 @@
     "ntfyTopic": "",
     "showVaultCode": true,
     "pointsPerTile": 25,
-    "elevationPerTile": 200
+    "elevationPerTile": 200,
+    "christmasAlwaysOpen": true
   },
   "stages": [
     {
@@ -24,12 +25,21 @@
           "isVocational": false,
           "title": "Wintersession im Bundeshaus",
           "infoText": "In der ersten Dezemberwoche treffen sich National- und Ständerat in Bern zur Wintersession. Drei Wochen lang beraten die Politikerinnen und Politiker das Geld-Budget der Schweiz für das nächste Jahr und diskutieren wichtige neue Gesetze.",
-          "facts": ["📍 Bern (Bundeshaus)", "⏱️ 3 Wochen Dauer", "🇨🇭 Budget & Gesetze"],
+          "facts": [
+            "📍 Bern (Bundeshaus)",
+            "⏱️ 3 Wochen Dauer",
+            "🇨🇭 Budget & Gesetze"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/news/schweiz",
           "quiz": {
             "question": "Wie viele Mitglieder hat der Schweizer Bundesrat insgesamt?",
-            "options": ["5 Mitglieder", "7 Mitglieder", "9 Mitglieder", "11 Mitglieder"],
+            "options": [
+              "5 Mitglieder",
+              "7 Mitglieder",
+              "9 Mitglieder",
+              "11 Mitglieder"
+            ],
             "correct": 1,
             "praise": "Volltreffer! Genau 7 Bundesrätinnen und Bundesräte bilden die Schweizer Landesregierung.",
             "correction": "Nicht ganz: Der Schweizer Bundesrat besteht seit 1848 aus genau 7 Mitgliedern."
@@ -56,12 +66,21 @@
           "isVocational": false,
           "title": "Schweizer Ski-Stars im Speed-Fieber",
           "infoText": "Im Dezember startet der Ski-Weltcup richtig durch. Schweizer Athletinnen und Athleten wie Marco Odermatt oder Lara Gut-Behrami rasen mit über 130 km/h die eisigen Pisten hinunter. Dabei entscheiden Hundertstelsekunden und perfekte Material-Abstimmung.",
-          "facts": ["⛷️ Ski Alpin Weltcup", "🇨🇭 Top-Skination", "⏱️ Hundertstel entscheiden"],
+          "facts": [
+            "⛷️ Ski Alpin Weltcup",
+            "🇨🇭 Top-Skination",
+            "⏱️ Hundertstel entscheiden"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "Welcher berühmte Berner Skiklassiker findet jeweils Mitte Januar in Wengen statt?",
-            "options": ["Lauberhorn-Rennen", "Spengler Cup", "Tour de Suisse", "Engadin Skimarathon"],
+            "options": [
+              "Lauberhorn-Rennen",
+              "Spengler Cup",
+              "Tour de Suisse",
+              "Engadin Skimarathon"
+            ],
             "correct": 0,
             "praise": "Richtig! Die Lauberhorn-Abfahrt in Wengen ist die längste Abfahrt im Weltcup.",
             "correction": "Knapp daneben: In Wengen findet jedes Jahr das berühmte Lauberhorn-Rennen statt."
@@ -88,12 +107,21 @@
           "isVocational": false,
           "title": "Swiss Design – Mechanik trifft Alltag",
           "infoText": "Die Schweiz ist weltweit bekannt für schlichtes und langlebiges Design: Vom roten Taschenmesser über den Sparschäler «Rex» bis zur SBB-Bahnhofsuhr. Gute Gestaltung bedeutet hier, dass ein Werkzeug oder Gerät Jahrzehnte zuverlässig funktioniert.",
-          "facts": ["🇨🇭 Schweizer Design", "⚙️ Langlebige Technik", "🕰️ SBB-Uhr seit 1944"],
+          "facts": [
+            "🇨🇭 Schweizer Design",
+            "⚙️ Langlebige Technik",
+            "🕰️ SBB-Uhr seit 1944"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/kultur",
           "quiz": {
             "question": "In welchem Jahr entwarf Hans Hilfiker die berühmte Schweizer Bahnhofsuhr (SBB)?",
-            "options": ["1912", "1944", "1978", "1995"],
+            "options": [
+              "1912",
+              "1944",
+              "1978",
+              "1995"
+            ],
             "correct": 1,
             "praise": "Genau! Die SBB-Bahnhofsuhr mit der roten Sekunden-Kelle stammt aus dem Jahr 1944.",
             "correction": "Nicht ganz: Hans Hilfiker entwickelte die SBB-Bahnhofsuhr im Jahr 1944."
@@ -120,12 +148,21 @@
           "isVocational": false,
           "title": "SRF Jahresrückblick & Mundart-Hits",
           "infoText": "Im Dezember blicken Radio und Fernsehen (SRF) auf die wichtigsten Momente des Jahres zurück. Bei den Sports Awards oder in Musik-Charts stehen Schweizer Künstlerinnen, Sportler und Alltagshelden im Rampenlicht.",
-          "facts": ["📺 TV-Rückblicke im Dez.", "🎵 Schweizer Mundart", "🏅 Sports Awards"],
+          "facts": [
+            "📺 TV-Rückblicke im Dez.",
+            "🎵 Schweizer Mundart",
+            "🏅 Sports Awards"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/unterhaltung",
           "quiz": {
             "question": "Wofür steht die Abkürzung «SRF» in der Schweiz?",
-            "options": ["Schweizer Radio und Fernsehen", "Sport-Ring Föderation", "Swiss Rail Foundation", "Sendestelle Region Freiburg"],
+            "options": [
+              "Schweizer Radio und Fernsehen",
+              "Sport-Ring Föderation",
+              "Swiss Rail Foundation",
+              "Sendestelle Region Freiburg"
+            ],
             "correct": 0,
             "praise": "Richtig! SRF bedeutet Schweizer Radio und Fernsehen.",
             "correction": "Fast: SRF ist die Abkürzung für Schweizer Radio und Fernsehen."
@@ -152,12 +189,21 @@
           "isVocational": true,
           "title": "Messmittel: Der Messschieber & Nonius",
           "infoText": "Der Messschieber ist das wichtigste Handmessmittel für Mechanikpraktiker/innen. Mit ihm kannst du Aussenmasse, Innenmasse, Tiefen und Absätze schnell und genau prüfen. Vor dem Messen immer die Messflächen sauber wischen und auf Null-Stellung achten!",
-          "facts": ["📏 Aussen-, Innen-, Tiefenmass", "🔍 Nonius 1/20 = 0.05 mm", "🧼 Vorher sauber wischen"],
+          "facts": [
+            "📏 Aussen-, Innen-, Tiefenmass",
+            "🔍 Nonius 1/20 = 0.05 mm",
+            "🧼 Vorher sauber wischen"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welche Messgenauigkeit (Ablesewert) hat ein normaler Werkstatt-Messschieber mit 1/20-Nonius?",
-            "options": ["0.5 mm", "0.05 mm", "0.005 mm", "1.0 mm"],
+            "options": [
+              "0.5 mm",
+              "0.05 mm",
+              "0.005 mm",
+              "1.0 mm"
+            ],
             "correct": 1,
             "praise": "Top! Ein 1/20-Nonius teilt 1 Millimeter in 20 Teile: 1 / 20 = 0.05 mm.",
             "correction": "Merke dir: 1 geteilt durch 20 ergibt 0.05 mm (fünf Hundertstelmillimeter)."
@@ -176,6 +222,87 @@
             "placeholder": "Gegenstand + gemessenes Mass in mm..."
           },
           "codeDigit": "5"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Ursprung der Adventszeit",
+          "title": "🕯️ Ursprung der Adventszeit: Kranz & Kalender",
+          "infoText": "«Advent» kommt vom lateinischen Wort «adventus» und bedeutet «Ankunft». Schon seit dem 4. Jahrhundert bereiten sich Menschen vier Wochen lang auf Weihnachten vor. Den ersten Adventskranz baute 1839 der Pfarrer Johann Hinrich Wichern aus einem alten Wagenrad, damit Heimkinder die Tage bis Heiligabend zählen konnten.",
+          "facts": [
+            "🕯️ Advent = Ankunft",
+            "🛞 Erstes Rad 1839",
+            "📅 4 Adventssonntage"
+          ],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch",
+          "quiz": {
+            "question": "Was bedeutet das lateinische Wort «adventus» auf Deutsch?",
+            "options": [
+              "Geschenk",
+              "Ankunft",
+              "Schneefall",
+              "Winterende"
+            ],
+            "correct": 1,
+            "praise": "Richtig! «Adventus» bedeutet Ankunft.",
+            "correction": "Adventus kommt aus dem Lateinischen und bedeutet «Ankunft»."
+          },
+          "quizQuestions": [
+            {
+              "question": "Was bedeutet das lateinische Wort «adventus» auf Deutsch?",
+              "options": [
+                "Geschenk",
+                "Ankunft",
+                "Schneefall",
+                "Winterende"
+              ],
+              "correct": 1,
+              "praise": "Richtig! «Adventus» bedeutet Ankunft.",
+              "correction": "Adventus kommt aus dem Lateinischen und bedeutet «Ankunft»."
+            },
+            {
+              "question": "Worauf befestigte Johann Hinrich Wichern 1839 in Hamburg die ersten Adventskerzen?",
+              "options": [
+                "Auf einem alten Wagenrad",
+                "Auf einem Metallamboss",
+                "Auf einem Schlitten",
+                "Auf einem Kirchturm"
+              ],
+              "correct": 0,
+              "praise": "Genau! Aus einem alten Holz-Wagenrad entstand der erste Adventskranz (damals mit 24 Kerzen).",
+              "correction": "Wichern nahm ein altes Wagenrad, damit die Kinder jeden Tag eine Kerze anzünden konnten."
+            },
+            {
+              "question": "Wie viele Sonntage gehören heute klassisch zur Adventszeit?",
+              "options": [
+                "2 Sonntage",
+                "3 Sonntage",
+                "4 Sonntage",
+                "6 Sonntage"
+              ],
+              "correct": 2,
+              "praise": "Stimmt! Es sind genau 4 Adventssonntage vor Weihnachten.",
+              "correction": "Heute feiern wir 4 Adventssonntage (1. bis 4. Advent)."
+            }
+          ],
+          "estimate": {
+            "question": "In welchem Jahr baute Johann Hinrich Wichern den allerersten Adventskranz?",
+            "min": 1750,
+            "max": 1950,
+            "step": 1,
+            "target": 1839,
+            "unit": "",
+            "tolerance": 15
+          },
+          "action": {
+            "prompt": "Werkstatt-Idee (5 Min): Stell dir vor, ihr baut im Team aus Metallresten einen kleinen «Werkstatt-Adventskranz». Aus welchem Material und mit welcher Verbindungstechnik (Schweissen, Schrauben, Biegen) würdet ihr ihn bauen?",
+            "placeholder": "Material + Verbindungstechnik für euren Werkstatt-Kranz..."
+          },
+          "codeDigit": "4"
         }
       ]
     },
@@ -194,12 +321,19 @@
           "isVocational": false,
           "title": "Abstimmungen & Demokratie (Woche 2)",
           "infoText": "In der Schweiz dürfen Stimmbürgerinnen und Stimmbürger viermal im Jahr über wichtige Vorlagen abstimmen. Auch Initiativen und Referenden sind Teil der direkten Demokratie. Im Unterricht schauen wir, was diese Woche aktuell diskutiert wird.",
-          "facts": ["🗳️ Direkte Demokratie", "📜 Initiative & Referendum"],
+          "facts": [
+            "🗳️ Direkte Demokratie",
+            "📜 Initiative & Referendum"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/news/schweiz",
           "quiz": {
             "question": "Wie viele Unterschriften braucht es in der Schweiz für eine Volksinitiative (Verfassungsänderung)?",
-            "options": ["50'000 Unterschriften", "100'000 Unterschriften", "250'000 Unterschriften"],
+            "options": [
+              "50'000 Unterschriften",
+              "100'000 Unterschriften",
+              "250'000 Unterschriften"
+            ],
             "correct": 1,
             "praise": "Richtig! Für eine Volksinitiative braucht es 100'000 gültige Unterschriften in 18 Monaten.",
             "correction": "Für ein Referendum reichen 50'000 – für eine Volksinitiative braucht es 100'000 Unterschriften."
@@ -226,12 +360,20 @@
           "isVocational": false,
           "title": "Eishockey & Wintersport aktuell (Woche 2)",
           "infoText": "In der National League kämpfen 14 Schweizer Eishockey-Clubs um Punkte für die Playoffs. Gleichzeitig trainieren viele Teams für den traditionellen Spengler Cup Ende Dezember in Davos.",
-          "facts": ["🏒 National League", "❄️ Spengler Cup Davos"],
+          "facts": [
+            "🏒 National League",
+            "❄️ Spengler Cup Davos"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "In welchem Bündner Ort findet jedes Jahr zwischen Weihnachten und Neujahr der Spengler Cup statt?",
-            "options": ["Chur", "Davos", "St. Moritz", "Arosa"],
+            "options": [
+              "Chur",
+              "Davos",
+              "St. Moritz",
+              "Arosa"
+            ],
             "correct": 1,
             "praise": "Genau! Der Spengler Cup wird jedes Jahr im Eisstadion von Davos gespielt.",
             "correction": "Der Spengler Cup ist das Traditionsturnier des HC Davos in Davos."
@@ -258,12 +400,19 @@
           "isVocational": false,
           "title": "Schweizer Bahn- und Tunnelbau (Woche 2)",
           "infoText": "Brücken, Bahnhöfe und lange Alpentunnels prägen die Kultur und Technik der Schweiz. Ohne präzise Vermessung und Stahl- und Maschinenbau würden die Züge heute nicht pünktlich durch die Alpen rollen.",
-          "facts": ["🚆 Gotthard-Basistunnel", "🏗️ Ingenieurskunst CH"],
+          "facts": [
+            "🚆 Gotthard-Basistunnel",
+            "🏗️ Ingenieurskunst CH"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/kultur",
           "quiz": {
             "question": "Wie heisst der längste Eisenbahntunnel der Welt in der Schweiz?",
-            "options": ["Lötschberg-Basistunnel", "Gotthard-Basistunnel", "Vereina-Tunnel"],
+            "options": [
+              "Lötschberg-Basistunnel",
+              "Gotthard-Basistunnel",
+              "Vereina-Tunnel"
+            ],
             "correct": 1,
             "praise": "Richtig! Der Gotthard-Basistunnel ist mit 57 km der längste Eisenbahntunnel der Welt.",
             "correction": "Gemeint ist der 57 km lange Gotthard-Basistunnel."
@@ -290,12 +439,19 @@
           "isVocational": false,
           "title": "Adventsbräuche & Streaming-Trends (Woche 2)",
           "infoText": "Im Dezember gibt es in der Schweiz viele Traditionen: Samichlaus-Umzüge, Weihnachtsmärkte und beliebte Spendenaktionen wie «Jeder Rappen zählt» bzw. Winter-Specials in Musik und Podcasts.",
-          "facts": ["🎅 Dezember-Bräuche", "🎧 Podcasts & Serien"],
+          "facts": [
+            "🎅 Dezember-Bräuche",
+            "🎧 Podcasts & Serien"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch",
           "quiz": {
             "question": "Wann wird in vielen Schweizer Gemeinden traditionell der Samichlaus gefeiert?",
-            "options": ["1. Dezember", "6. Dezember", "18. Dezember"],
+            "options": [
+              "1. Dezember",
+              "6. Dezember",
+              "18. Dezember"
+            ],
             "correct": 1,
             "praise": "Richtig! Am 6. Dezember ist Nikolaustag (Samichlaus).",
             "correction": "Traditionell kommt der Samichlaus am 6. Dezember."
@@ -322,12 +478,21 @@
           "isVocational": true,
           "title": "Bohren & Schnittgeschwindigkeit (vc)",
           "infoText": "Beim Bohren mit dem Spiralbohrer muss die Drehzahl zum Bohrerdurchmesser und zum Werkstoff passen. Kleine Bohrer drehen schnell, grosse Bohrer drehen langsam! Ein normaler HSS-Spiralbohrer für Stahl hat einen Spitzenwinkel von 118°.",
-          "facts": ["🔩 Spitzenwinkel HSS: 118°", "⚡ Klein = hohe Drehzahl", "💧 Kühlschmierstoff nutzen"],
+          "facts": [
+            "🔩 Spitzenwinkel HSS: 118°",
+            "⚡ Klein = hohe Drehzahl",
+            "💧 Kühlschmierstoff nutzen"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welchen Spitzenwinkel hat ein Standard-HSS-Spiralbohrer für Baustahl?",
-            "options": ["60°", "90°", "118°", "140°"],
+            "options": [
+              "60°",
+              "90°",
+              "118°",
+              "140°"
+            ],
             "correct": 2,
             "praise": "Perfekt! 118° ist der klassische Spitzenwinkel für Standard-HSS-Bohrer.",
             "correction": "Der Standard-Spitzenwinkel bei HSS-Spiralbohrern beträgt 118°."
@@ -346,6 +511,87 @@
             "placeholder": "Höher oder tiefer + kurze Begründung..."
           },
           "codeDigit": "2"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Sitten und Bräuche",
+          "title": "🎅 Sitten & Bräuche: Samichlaus bis Klausjagen",
+          "infoText": "Im Dezember pflegt die Schweiz viele lebendige Bräuche: Am 6. Dezember zieht der Samichlaus mit dem Schmutzli durch die Dörfer und bringt Nüsse, Mandarinli und Lebkuchen. In Küssnacht am Rigi ziehen beim berühmten «Klausjagen» über 200 leuchtende, papiergeschnitzte «Iffelen» mit lauten Trychlen durch die dunkle Nacht.",
+          "facts": [
+            "🎅 Samichlaus (6. Dez.)",
+            "✨ Iffelen in Küssnacht",
+            "🍪 Mailänderli & Brunsli"
+          ],
+          "imageUrl": "",
+          "externalLink": "https://www.srf.ch",
+          "quiz": {
+            "question": "Wie heissen die hohen, leuchtenden Kopfbedeckungen beim «Klausjagen» in Küssnacht am Rigi?",
+            "options": [
+              "Iffelen",
+              "Chräbeli",
+              "Schellen",
+              "Laternenhüte"
+            ],
+            "correct": 0,
+            "praise": "Volltreffer! Die kunstvollen Leucht-Mitren heissen «Iffelen».",
+            "correction": "Beim Klausjagen tragen die Männer bis zu zwei Meter hohe, beleuchtete «Iffelen»."
+          },
+          "quizQuestions": [
+            {
+              "question": "Wie heissen die hohen, leuchtenden Kopfbedeckungen beim «Klausjagen» in Küssnacht am Rigi?",
+              "options": [
+                "Iffelen",
+                "Chräbeli",
+                "Schellen",
+                "Laternenhüte"
+              ],
+              "correct": 0,
+              "praise": "Volltreffer! Die kunstvollen Leucht-Mitren heissen «Iffelen».",
+              "correction": "Beim Klausjagen tragen die Männer bis zu zwei Meter hohe, beleuchtete «Iffelen»."
+            },
+            {
+              "question": "Wer begleitet den Schweizer Samichlaus traditionell auf seinem Weg durch die Häuser?",
+              "options": [
+                "Der Schmutzli",
+                "Der Senn",
+                "Der Nachtwächter",
+                "Der Postillon"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Der Schmutzli hilft beim Tragen des schweren Sacks.",
+              "correction": "In der Deutschschweiz ist meist der Schmutzli an der Seite des Samichlaus."
+            },
+            {
+              "question": "Welches dieser drei Gebäcke gehört zu den klassischen Schweizer Weihnachtsguetzli?",
+              "options": [
+                "Brunsli",
+                "Brezel",
+                "Berliner",
+                "Birnenweggen"
+              ],
+              "correct": 0,
+              "praise": "Genau! Basler Brunsli (mit Schokolade und Mandeln) sind echte Guetzli-Klassiker.",
+              "correction": "Brunsli, Mailänderli und Zimtsterne sind klassische Schweizer Weihnachtsguetzli."
+            }
+          ],
+          "estimate": {
+            "question": "Wie schwer kann eine grosse geschmiedete Kuh-Trychel beim Klausjagen oder Chlausumzug ungefähr sein?",
+            "min": 1,
+            "max": 15,
+            "step": 0.5,
+            "target": 6,
+            "unit": "kg",
+            "tolerance": 2
+          },
+          "action": {
+            "prompt": "Brauch-Check (5 Min): Welchen Dezember- oder Weihnachtsbrauch kennt ihr aus eurer Familie, eurem Dorf oder eurem Herkunftsland? Notiert 1–2 Sätze dazu.",
+            "placeholder": "Mein Lieblingsbrauch im Dezember..."
+          },
+          "codeDigit": "6"
         }
       ]
     },
@@ -364,12 +610,19 @@
           "isVocational": false,
           "title": "Energie & Strom im Winter (Woche 3)",
           "infoText": "Im Winter braucht die Schweiz viel Strom zum Heizen, Beleuchten und für Maschinen in Werkstätten. Stauseen in den Alpen speichern Wasser, damit auch an kalten Tagen genügend Elektrizität produziert werden kann.",
-          "facts": ["⚡ Wasserkraft in den Alpen", "❄️ Hoher Winterbedarf"],
+          "facts": [
+            "⚡ Wasserkraft in den Alpen",
+            "❄️ Hoher Winterbedarf"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/news/schweiz",
           "quiz": {
             "question": "Welche Energiequelle liefert in der Schweiz den grössten Teil des Stroms?",
-            "options": ["Kohlekraftwerke", "Wasserkraft", "Windräder"],
+            "options": [
+              "Kohlekraftwerke",
+              "Wasserkraft",
+              "Windräder"
+            ],
             "correct": 1,
             "praise": "Genau! Rund 55–60 % des Schweizer Stroms stammt aus Wasserkraft.",
             "correction": "In der Schweiz ist Wasserkraft die wichtigste Stromquelle."
@@ -396,12 +649,19 @@
           "isVocational": false,
           "title": "Jahres-Highlights Schweizer Sport (Woche 3)",
           "infoText": "Kurz vor Weihnachten werden oft die besten Sportlerinnen, Sportler und Teams der Schweiz ausgezeichnet. Neben Ski und Fussball glänzen auch Schwingen, Leichtathletik, Radsport und Unihockey.",
-          "facts": ["🏅 Schweizer Sportjahr", "🇨🇭 Breite Sportkultur"],
+          "facts": [
+            "🏅 Schweizer Sportjahr",
+            "🇨🇭 Breite Sportkultur"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "Wie heisst der traditionelle Schweizer Nationalsport im Sägemehlring?",
-            "options": ["Schwingen", "Hornussen", "Steinstossen"],
+            "options": [
+              "Schwingen",
+              "Hornussen",
+              "Steinstossen"
+            ],
             "correct": 0,
             "praise": "Richtig! Schwingen findet im Sägemehlring statt.",
             "correction": "Im Sägemehlring wird geschwungen (Schwingen)."
@@ -428,12 +688,19 @@
           "isVocational": false,
           "title": "Vier Sprachen in einem Land (Woche 3)",
           "infoText": "Die Schweiz verbindet vier Landessprachen: Deutsch, Französisch, Italienisch und Rätoromanisch. Auch auf Werkzeug-Anleitungen, Sicherheitszeichen und in nationalen News begegnen uns diese Sprachen täglich.",
-          "facts": ["🗣️ 4 Landessprachen", "🇨🇭 Mehrsprachige Schweiz"],
+          "facts": [
+            "🗣️ 4 Landessprachen",
+            "🇨🇭 Mehrsprachige Schweiz"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/kultur",
           "quiz": {
             "question": "Welche vier Sprachen sind die offiziellen Landessprachen der Schweiz?",
-            "options": ["Deutsch, Englisch, Französisch, Italienisch", "Deutsch, Französisch, Italienisch, Rätoromanisch", "Deutsch, Französisch, Spanisch, Romanisch"],
+            "options": [
+              "Deutsch, Englisch, Französisch, Italienisch",
+              "Deutsch, Französisch, Italienisch, Rätoromanisch",
+              "Deutsch, Französisch, Spanisch, Romanisch"
+            ],
             "correct": 1,
             "praise": "Stimmt genau! Deutsch, Französisch, Italienisch und Rätoromanisch.",
             "correction": "Englisch ist keine Landessprache – richtig sind Deutsch, Französisch, Italienisch und Rätoromanisch."
@@ -460,12 +727,19 @@
           "isVocational": false,
           "title": "Schweizer Erfindungen & Rekorde (Woche 3)",
           "infoText": "Wusstest du, dass der Reissverschluss (weiterentwickelt in der Schweiz), der Klettverschluss (Velcro) und der Aluminium-Sparschäler Schweizer Ideen sind? Oft entstand eine Erfindung aus genauer Beobachtung im Alltag.",
-          "facts": ["💡 Velcro (Klettverschluss)", "🇨🇭 Erfindergeist"],
+          "facts": [
+            "💡 Velcro (Klettverschluss)",
+            "🇨🇭 Erfindergeist"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch",
           "quiz": {
             "question": "Was inspirierte den Schweizer Ingenieur George de Mestral zur Erfindung des Klettverschlusses?",
-            "options": ["Kletten-Früchte im Fell seines Hundes", "Spinnweben im Wald", "Tannenzapfen im Schnee"],
+            "options": [
+              "Kletten-Früchte im Fell seines Hundes",
+              "Spinnweben im Wald",
+              "Tannenzapfen im Schnee"
+            ],
             "correct": 0,
             "praise": "Genau! Unter dem Mikroskop sah er die winzigen Häkchen der Kletten.",
             "correction": "Es waren Kletten-Früchte, die im Fell seines Hundes hängen blieben."
@@ -492,12 +766,21 @@
           "isVocational": true,
           "title": "Gewindeschneiden: Kernloch M8 & M10",
           "infoText": "Wenn du ein Innengewinde schneiden willst, musst du zuerst das richtige Kernloch vorbohren. Für metrische ISO-Regelgewinde gilt die praktische Faustformel: Kernloch-Durchmesser ≈ Aussendurchmesser minus Steigung (d - P).",
-          "facts": ["🔩 M10: Steigung 1.5 mm", "📐 Formel: d - P", "🛢️ Schneidöl verwenden"],
+          "facts": [
+            "🔩 M10: Steigung 1.5 mm",
+            "📐 Formel: d - P",
+            "🛢️ Schneidöl verwenden"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welchen Spiralbohrer brauchst du für das Kernloch eines M10-Gewindes (Steigung P = 1.5 mm)?",
-            "options": ["8.0 mm", "8.5 mm", "9.0 mm", "10.0 mm"],
+            "options": [
+              "8.0 mm",
+              "8.5 mm",
+              "9.0 mm",
+              "10.0 mm"
+            ],
             "correct": 1,
             "praise": "Exakt! 10.0 mm minus 1.5 mm ergibt 8.5 mm Kernlochbohrer.",
             "correction": "Mit der Faustformel d - P rechnest du 10 - 1.5 = 8.5 mm."
@@ -516,6 +799,85 @@
             "placeholder": "Kurze Erklärung zum Spanbrechen..."
           },
           "codeDigit": "4"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Sinn der Adventszeit",
+          "title": "⭐ Sinn der Adventszeit: Licht & Zusammenhalt",
+          "infoText": "Im Dezember sind die Tage kurz und oft grau. Der eigentliche Sinn der Adventszeit ist kein Einkaufsstress, sondern ein Gegenpol zur Hektik: Kerzenlicht anzünden, kurz durchatmen, an Menschen denken, denen es weniger gut geht, und im Betrieb oder in der Familie respektvoll zusammenhalten.",
+          "facts": [
+            "🕯️ Licht in dunkler Zeit",
+            "🤝 Zeit & Respekt",
+            "🎁 Helfen statt Hektik"
+          ],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Welches Symbol spielt in fast allen Winter- und Adventsbräuchen die wichtigste Rolle?",
+            "options": [
+              "Licht und Wärme",
+              "Schnelle Autos",
+              "Lautstärke",
+              "Kälte"
+            ],
+            "correct": 0,
+            "praise": "Richtig! Kerzen und Lichter stehen für Hoffnung und Wärme in den dunklen Wintertagen.",
+            "correction": "Licht und Wärme sind das zentrale Zeichen in der dunklen Jahreszeit."
+          },
+          "quizQuestions": [
+            {
+              "question": "Welches Symbol spielt in fast allen Winter- und Adventsbräuchen die wichtigste Rolle?",
+              "options": [
+                "Licht und Wärme",
+                "Schnelle Autos",
+                "Lautstärke",
+                "Kälte"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Kerzen und Lichter stehen für Hoffnung und Wärme in den dunklen Wintertagen.",
+              "correction": "Licht und Wärme sind das zentrale Zeichen in der dunklen Jahreszeit."
+            },
+            {
+              "question": "Welcher astronomische Tag mit den wenigsten Sonnenstunden fällt auf den 21. Dezember?",
+              "options": [
+                "Wintersonnenwende",
+                "Tagundnachtgleiche",
+                "Sommersonnenwende"
+              ],
+              "correct": 0,
+              "praise": "Genau! Ab der Wintersonnenwende werden die Tage wieder langsam länger.",
+              "correction": "Am 21. Dezember ist die Wintersonnenwende (kürzester Tag des Jahres)."
+            },
+            {
+              "question": "Was gehört am besten zum ursprünglichen Gedanken der Adventszeit?",
+              "options": [
+                "Innehalten, teilen und füreinander da sein",
+                "Möglichst viele Pakete bestellen",
+                "Jeden Tag Überstunden machen"
+              ],
+              "correct": 0,
+              "praise": "Stimmt! Zeit für andere und Zusammenhalt machen den Advent wertvoll.",
+              "correction": "Im Mittelpunkt stehen Ruhe, Gemeinschaft und Hilfsbereitschaft."
+            }
+          ],
+          "estimate": {
+            "question": "Ungefähr wie viele Stunden ist es am 21. Dezember in der Schweiz hell (Tageslänge)?",
+            "min": 4,
+            "max": 16,
+            "step": 0.5,
+            "target": 8.5,
+            "unit": "Std.",
+            "tolerance": 1
+          },
+          "action": {
+            "prompt": "Team-Auftrag (5 Min): Überlegt zu zweit: Mit welcher kleinen Geste könnt ihr diese Woche im Lehrbetrieb oder in der Klasse jemandem eine echte Freude machen?",
+            "placeholder": "Unsere konkrete Geste für diese Woche..."
+          },
+          "codeDigit": "8"
         }
       ]
     },
@@ -534,12 +896,19 @@
           "isVocational": false,
           "title": "Neues Jahr – Neue Gesetze in der Schweiz",
           "infoText": "Jedes Jahr am 1. Januar treten in der Schweiz neue Regeln in Kraft – zum Beispiel im Strassenverkehr, bei Abgaben oder in der Berufsbildung. Sich kurz zu informieren hilft, im Betrieb und Alltag up to date zu bleiben.",
-          "facts": ["📅 Start am 1. Januar", "⚖️ Regeln im Alltag"],
+          "facts": [
+            "📅 Start am 1. Januar",
+            "⚖️ Regeln im Alltag"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.admin.ch",
           "quiz": {
             "question": "Wer wählt in der Schweiz jedes Jahr die Bundespräsidentin oder den Bundespräsidenten?",
-            "options": ["Das Volk direkt", "Die Vereinigte Bundesversammlung", "Die Kantonsregierungen"],
+            "options": [
+              "Das Volk direkt",
+              "Die Vereinigte Bundesversammlung",
+              "Die Kantonsregierungen"
+            ],
             "correct": 1,
             "praise": "Richtig! Die Vereinigte Bundesversammlung wählt im Dezember für jeweils ein Jahr.",
             "correction": "Im Dezember wählt die Vereinigte Bundesversammlung jeweils eine Person aus dem Bundesrat für ein Jahr."
@@ -566,12 +935,19 @@
           "isVocational": false,
           "title": "Wintersport über die Festtage",
           "infoText": "Zwischen Weihnachten und Neujahr pausiert kaum ein Wintersport: Vierschanzentournee, Ski-Rennen in Bormio und Adelboden sowie Eishockey-Turniere begeistern Millionen Fans vor dem Fernseher und auf den Pisten.",
-          "facts": ["🎿 Festtags-Sport", "🏔️ Skispringen & Ski"],
+          "facts": [
+            "🎿 Festtags-Sport",
+            "🏔️ Skispringen & Ski"
+          ],
           "imageUrl": "",
           "externalLink": "https://www.srf.ch/sport",
           "quiz": {
             "question": "Wie heisst der berühmte Schweizer Skisprung-Olympiasieger aus dem Toggenburg?",
-            "options": ["Simon Ammann", "Didier Cuche", "Dario Cologna"],
+            "options": [
+              "Simon Ammann",
+              "Didier Cuche",
+              "Dario Cologna"
+            ],
             "correct": 0,
             "praise": "Volltreffer! Simon Ammann holte 4× Olympia-Gold im Skispringen.",
             "correction": "Simon Ammann ist der 4-fache Schweizer Skisprung-Olympiasieger."
@@ -598,12 +974,19 @@
           "isVocational": false,
           "title": "Feiertage & Zeit für Familie/Freunde",
           "infoText": "Weihnachten wird in der Schweiz ganz unterschiedlich gefeiert: mit Fondue Chinoise, Guetzli, einem Spaziergang im Schnee oder einfach mit ein paar ruhigen Tagen ohne Wecker. Nach einem intensiven Lehrjahr tut Erholung gut.",
-          "facts": ["🍪 Weihnachtsguetzli", "🕯️ Erholung nach der Arbeit"],
+          "facts": [
+            "🍪 Weihnachtsguetzli",
+            "🕯️ Erholung nach der Arbeit"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Welches traditionelle Schweizer Weihnachtsgebäck wird mit Anis zubereitet und auf ein Model gedrückt?",
-            "options": ["Mailänderli", "Springerle / Chräbeli", "Brunsli"],
+            "options": [
+              "Mailänderli",
+              "Springerle / Chräbeli",
+              "Brunsli"
+            ],
             "correct": 1,
             "praise": "Stimmt! Anis-Chräbeli bzw. Springerle werden mit Anis gebacken.",
             "correction": "Anis steckt klassisch in Chräbeli und Springerle."
@@ -630,12 +1013,19 @@
           "isVocational": false,
           "title": "Silvester & Neujahrs-Feuerwerk",
           "infoText": "Zum Jahreswechsel leuchtet in vielen Schweizer Städten am See ein grosses Feuerwerk – oder moderne Drohnen-Shows zeichnen bunte Bilder in den Nachthimmel. Gleichzeitig starten viele mit guten Vorsätzen ins neue Jahr.",
-          "facts": ["🎆 Silvester in der CH", "🛸 Drohnen-Shows"],
+          "facts": [
+            "🎆 Silvester in der CH",
+            "🛸 Drohnen-Shows"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "In welcher Schweizer Stadt findet traditionell das grösste See-Silvesterfeuerwerk statt?",
-            "options": ["Zürich", "Aarau", "Chur"],
+            "options": [
+              "Zürich",
+              "Aarau",
+              "Chur"
+            ],
             "correct": 0,
             "praise": "Richtig! Der «Silvesterzauber» am Zürcher Seebecken zieht jedes Jahr Zehntausende an.",
             "correction": "Der grosse «Silvesterzauber» steigt am Zürichsee in Zürich."
@@ -662,12 +1052,20 @@
           "isVocational": true,
           "title": "Arbeitssicherheit & PSA in der Werkstatt",
           "infoText": "Deine Gesundheit ist wichtiger als jedes Werkstück! In der mechanischen Werkstatt gilt: Schutzbrille auf bei allen spanabhebenden Arbeiten, enganliegende Kleidung tragen und an rotierenden Maschinen (Bohrmaschine, Drehmaschine) NIEMALS Handschuhe tragen – Einzugsgefahr!",
-          "facts": ["🥽 Schutzbrille Pflicht", "🚫 Keine Handschuhe am Bohrer", "🧹 Späne mit Pinsel/Haken"],
+          "facts": [
+            "🥽 Schutzbrille Pflicht",
+            "🚫 Keine Handschuhe am Bohrer",
+            "🧹 Späne mit Pinsel/Haken"
+          ],
           "imageUrl": "",
           "externalLink": "",
           "quiz": {
             "question": "Was ist an einer laufenden Ständerbohrmaschine streng verboten?",
-            "options": ["Schutzbrille tragen", "Arbeitshandschuhe tragen", "Werkstück im Maschinenschraubstock spannen"],
+            "options": [
+              "Schutzbrille tragen",
+              "Arbeitshandschuhe tragen",
+              "Werkstück im Maschinenschraubstock spannen"
+            ],
             "correct": 1,
             "praise": "Richtig! Handschuhe können vom rotierenden Bohrer erfasst werden (schwere Einzugsgefahr).",
             "correction": "Achtung: Arbeitshandschuhe dürfen an rotierenden Maschinen niemals getragen werden!"
@@ -686,6 +1084,85 @@
             "placeholder": "3 Sicherheitschecks vor dem Bohren..."
           },
           "codeDigit": "8"
+        },
+        {
+          "category": "weihnachtliches",
+          "categoryLabel": "Weihnachtliches",
+          "icon": "🎄",
+          "isVocational": false,
+          "isChristmas": true,
+          "themeTag": "Geschichten und Legenden",
+          "title": "📖 Geschichten & Legenden: Nikolaus & Scrooge",
+          "infoText": "Rund um den Advent gibt es berühmte Geschichten: Bischof Nikolaus von Myra warf einer armen Familie heimlich Goldmünzen ins Fenster, damit niemand Not litt. Charles Dickens erzählte 1843 vom geizigen Ebenezer Scrooge, der durch drei Weihnachtsgeister lernte, grosszügig zu sein. Und 1914 legten Soldaten an Weihnachten sogar die Waffen nieder.",
+          "facts": [
+            "🪙 Nikolaus von Myra",
+            "👻 Ebenezer Scrooge",
+            "⚽ Weihnachtsfrieden 1914"
+          ],
+          "imageUrl": "",
+          "externalLink": "",
+          "quiz": {
+            "question": "Wie heisst der berühmte Geizhals aus Charles Dickens' Weihnachtsgeschichte?",
+            "options": [
+              "Ebenezer Scrooge",
+              "Sherlock Holmes",
+              "Robinson Crusoe",
+              "Oliver Twist"
+            ],
+            "correct": 0,
+            "praise": "Richtig! Ebenezer Scrooge verwandelt sich vom Geizhals zum hilfsbereiten Menschen.",
+            "correction": "Der geizige Geschäftsmann bei Charles Dickens heisst Ebenezer Scrooge."
+          },
+          "quizQuestions": [
+            {
+              "question": "Wie heisst der berühmte Geizhals aus Charles Dickens' Weihnachtsgeschichte?",
+              "options": [
+                "Ebenezer Scrooge",
+                "Sherlock Holmes",
+                "Robinson Crusoe",
+                "Oliver Twist"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Ebenezer Scrooge verwandelt sich vom Geizhals zum hilfsbereiten Menschen.",
+              "correction": "Der geizige Geschäftsmann bei Charles Dickens heisst Ebenezer Scrooge."
+            },
+            {
+              "question": "Wie half Bischof Nikolaus von Myra laut Legende einer völlig verarmten Familie?",
+              "options": [
+                "Er warf heimlich Goldmünzen durch das Fenster",
+                "Er baute ihnen ein Schloss",
+                "Er schickte ihnen Rentiere"
+              ],
+              "correct": 0,
+              "praise": "Genau! Daraus entstand auch der Brauch des heimlichen Schenkens.",
+              "correction": "Laut Überlieferung warf Nikolaus heimlich Goldsäckchen ins Haus."
+            },
+            {
+              "question": "Was geschah beim historischen «Weihnachtsfrieden» an Heiligabend 1914 im Schützengraben?",
+              "options": [
+                "Soldaten sangen Lieder, tauschten Zigaretten und spielten Fussball",
+                "Es fiel überhaupt kein Schnee",
+                "Der Krieg wurde für immer beendet"
+              ],
+              "correct": 0,
+              "praise": "Richtig! Für kurze Zeit siegte die Menschlichkeit mitten im Ersten Weltkrieg.",
+              "correction": "An manchen Frontabschnitten kamen verfeindete Soldaten zusammen, sangen und spielten Fussball."
+            }
+          ],
+          "estimate": {
+            "question": "Um welches Jahr nach Christus lebte der historische Bischof Nikolaus von Myra (Todesjahr ca.)?",
+            "min": 100,
+            "max": 800,
+            "step": 10,
+            "target": 343,
+            "unit": "n. Chr.",
+            "tolerance": 50
+          },
+          "action": {
+            "prompt": "Mini-Legende (5 Min): Erfindet zu zweit in 2 Sätzen eine kurze «Werkstatt-Weihnachtsgeschichte»: Ein Teil klemmt, Stress ist gross – wie hilft Teamgeist am Ende weiter?",
+            "placeholder": "Unsere kurze Werkstatt-Geschichte..."
+          },
+          "codeDigit": "9"
         }
       ]
     }
